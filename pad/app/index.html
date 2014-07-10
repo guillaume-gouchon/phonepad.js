@@ -1,0 +1,88 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" manifest="phonepad.appcache"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Phone Pad</title>
+        <meta name="description" content="Use your phone as a gamepad to play HTML5 Games !">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <link rel="icon" href="favicon.ico" />
+        <link rel="icon" sizes="196x196" href="images/icon.png">
+        <link rel="icon" sizes="128x128" href="images/icon_128.png">
+        <link rel="apple-touch-icon" sizes="128x128" href="images/icon_128.png">
+
+        <!-- build:css styles/vendor.css -->
+        <!-- endbuild -->
+
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/pad.css">
+        <!-- endbuild -->
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="phonepad">
+
+            <div id="axis">
+
+                <div id="axisNW"></div>
+                <div id="axisN"></div>
+                <div id="axisNE"></div>
+                <div id="axisW"></div>
+                <div id="axisC"></div>
+                <div id="axisE"></div>
+                <div id="axisSW"></div>
+                <div id="axisS"></div>
+                <div id="axisSE"></div>
+
+            </div>
+
+            <div id="buttons">
+
+                <div id="btnY"></div>
+                <div id="btnX"></div>
+                <div id="btnB"></div>
+                <div id="btnA"></div>
+
+            </div>
+
+            <!-- <div id="joinGameDialog">
+                <div class="centerVertical">
+                    <input id="inputName" class="bounce" type="text" placeholder="game id..." tabindex="1" />
+                    <button id="joinGameBtn" >Join Game !</button>
+                    <br/>
+                    <br/>
+                    <label id="wheel" class="hide">
+                        <input type="checkbox" value="1" tabindex="2" /> Use Phone Accelerometer ?
+                    </label>
+                    <p><button id="rejoinBtn" class="hide">Rejoin Game you just left ?</button></p>
+                </div>
+            </div>
+             -->
+        </div>
+
+
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/modernizr/modernizr.js"></script>
+        <script src="bower_components/jquery/jquery.js"></script>
+        <script type='application/javascript' src='bower_components/fastclick/lib/fastclick.js'></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:js({app,.tmp}) scripts/main.js -->
+        <script src="scripts/main.js"></script>
+        <!-- endbuild -->
+        
+        <script src="http://warnode.com:9090/socket.io/socket.io.js"></script>
+        <script src="http://cdn.peerjs.com/0.3/peer.js"></script>
+</body>
+</html>
