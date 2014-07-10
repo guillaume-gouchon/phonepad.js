@@ -7,20 +7,21 @@ app.listen(PORT);
 
 function handler (req, res) {
   res.writeHead(200);
-  res.end('yo');
+  res.end('yoooo');
 }
 
-
-// current games socket list
+// list of current games
 var games = {};
 
 // init socket.io
 io.sockets.on('connection', function (socket) {
 
+  // game creation
   socket.on('newGame', function (data) {
     games[data] = socket;
   });
 
+  // new player is connected
   socket.on('pId', function (data) {
     var gameSocket = games[data.gameId];
     if (gameSocket != null) {
@@ -28,6 +29,7 @@ io.sockets.on('connection', function (socket) {
     }
   });
 
+  // commands to dispatch !
   socket.on('comm', function (data) {
      var gameSocket = games[data.gameId];
     if (gameSocket != null) {
@@ -35,6 +37,7 @@ io.sockets.on('connection', function (socket) {
     }
   });
 
+  // a player or a game has been disconnected
   socket.on('disconnect', function () {
     var disconnectedSocket = games[socket.id];
     if (disconnectedSocket != null) {
@@ -45,4 +48,4 @@ io.sockets.on('connection', function (socket) {
 
 });
 
-console.info("Mychrome Machines server is running on port " + PORT + " !");
+console.info("Server is running on port " + PORT + " !");
