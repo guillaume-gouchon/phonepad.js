@@ -21,7 +21,7 @@
         <!-- endbuild -->
 
         <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="styles/pad.css">
+        <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
     </head>
     <body>
@@ -54,19 +54,16 @@
 
             </div>
 
-            <!-- <div id="joinGameDialog">
-                <div class="centerVertical">
+            <div id="joinGame">
+                <div>
                     <input id="inputName" class="bounce" type="text" placeholder="game id..." tabindex="1" />
-                    <button id="joinGameBtn" >Join Game !</button>
-                    <br/>
-                    <br/>
-                    <label id="wheel" class="hide">
-                        <input type="checkbox" value="1" tabindex="2" /> Use Phone Accelerometer ?
-                    </label>
-                    <p><button id="rejoinBtn" class="hide">Rejoin Game you just left ?</button></p>
+                    <button id="joinGameBtn" >Join game !</button>
+                </div>
+                <div>
+                    <button id="rejoinBtn" class="hidei">Reconnect ?</button>
                 </div>
             </div>
-             -->
+            
         </div>
 
 
@@ -75,6 +72,7 @@
         <script src="bower_components/modernizr/modernizr.js"></script>
         <script src="bower_components/jquery/jquery.js"></script>
         <script type='application/javascript' src='bower_components/fastclick/lib/fastclick.js'></script>
+        <script src="/bower_components/peerjs/peer.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -83,6 +81,5 @@
         <!-- endbuild -->
         
         <script src="http://warnode.com:9090/socket.io/socket.io.js"></script>
-        <script src="http://cdn.peerjs.com/0.3/peer.js"></script>
 </body>
 </html>
