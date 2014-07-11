@@ -4,7 +4,7 @@
 function Network() {
 
 	var PEER_API_KEY = '609xv5np9cu15rk9';
-	var WS_SERVER_URL = 'http://warnode.com:9095';
+	var WS_SERVER_URL = 'http://warnode.com:7070';
 
 	var webRTCConnector = null;
 	var socket = null;

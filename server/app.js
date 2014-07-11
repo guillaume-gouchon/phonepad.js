@@ -1,4 +1,4 @@
-var PORT = 9095;
+var PORT = 7070;
 
 var app = require('http').createServer(handler);
 var io = require('socket.io')(app);
