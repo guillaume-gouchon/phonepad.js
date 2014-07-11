@@ -106,6 +106,7 @@ body {
 		text-shadow: 2px 2px 2px #000;
 		text-align: center;
 		box-shadow: inset 0px 0px 12px 6px rgba(150, 150, 150, 0.75);
+		user-select: none;
 
 		&.active {
 			opacity: 1.0;
@@ -139,30 +140,30 @@ body {
 	width: 100%;
 	background: rgba(0, 0, 0, 0.8);
 	text-align: center;
-	padding: 80px 0px;
+	padding: 20px 0px;
 
 	div {
-		height: 30%;
-		margin: 0px;
+		margin-bottom: 20px;
 
 		input {
 			font-family: 'myFont';
-			height: 60%;
-			width: 50%;
+			height: 60px;
+			width: 45%;
 			padding-left: 2%;
-			font-size: 2em;
+			font-size: 0.8em;
 			margin-right: 2%;
 			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 			background: radial-gradient(ellipse at center, #000 10%, #222 100%);
 			border-radius: 20px;
 			color: #eee;
+			outline: 0;
 		}
 
 		button {
 			font-family: 'myFont';
-			height: 60%;
-			width: 20%;
-			font-size: 2em;
+			height: 60px;
+			width: 35%;
+			font-size: 0.8em;
 			box-shadow: inset 0px 0px 12px 6px rgba(150, 150, 150, 0.95);
 			background: radial-gradient(ellipse at center, green 10%, #000 100%);
 			border: none;
@@ -170,6 +171,11 @@ body {
 			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 			color: #ccc;
 			text-shadow: 2px 2px black;
+			outline: 0;
+
+			&.active {
+				opacity: 0.5;
+			}
 		}
 
 		#rejoinBtn {
@@ -191,4 +197,61 @@ body {
     100% {
         transform: scale(0.95);
     }
+}
+
+#loading {
+	height: 100%;
+	width: 100%;
+	background: #000;
+	opacity: 0.8;
+	z-index: 1000;
+
+	.container {
+		padding-top: 100px;
+	}
+
+	.ring {
+		background-color: rgba(0,0,0,0);
+    border: 5px solid rgba(0,229, 183,0.9);
+    opacity: .9;
+    border-top: 5px solid rgba(0,0,0,0);
+    border-left: 5px solid rgba(0,0,0,0);
+    border-radius: 50px;
+    box-shadow: 0 0 35px #2187e7;
+    margin: 0 auto;
+
+    &:nth-child(1) {
+    	width: 50px;
+	    height: 50px;
+	    animation: spin .7s infinite linear;
+    }
+
+    &:nth-child(2) {
+    	width: 30px;
+	    height: 30px;
+	    position: relative;
+	    top: -50px;
+	    animation: spinoff .7s infinite linear;
+		}
+	}
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    };
+}
+
+@keyframes spinoff {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    };
 }
