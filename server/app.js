@@ -2,6 +2,7 @@ var PORT = 7070;
 
 var app = require('http').createServer(handler);
 var io = require('socket.io')(app);
+var randomWords = require('./randomWords');
 
 app.listen(PORT);
 
@@ -16,10 +17,14 @@ var games = {};
 // init socket.io
 io.sockets.on('connection', function (socket) {
 
-  // game creation
-  socket.on('newGame', function (data) {
-    games[data] = socket;
-  });
+  // pick a unique game id
+  var gameId;
+  do {
+    gameId = randomWords.pick();
+  } while (games[gameId] != null);
+
+  games[gameId] = socket;
+  socket.emit('gameId', gameId);
 
   // new player is connected
   socket.on('pId', function (data) {

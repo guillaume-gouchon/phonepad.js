@@ -1,5 +1,4 @@
 var wordList = [
-  // Borrowed from xkcd password generator which borrowed it from wherever
   'able',
   'about',
   'above',
@@ -1055,6 +1054,6 @@ var wordList = [
   'zoo'
 ];
 
-function randomWord() {
+exports.pick = function () {
   return wordList[parseInt(wordList.length * Math.random())];
 }

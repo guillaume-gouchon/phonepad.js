@@ -278,9 +278,6 @@ var Phonepad = (function () {
       /**
       *		PUBLIC
       */
-      getRandomNumber: function() {
-        return privateRandomNumber;
-      }
  
     };
  
