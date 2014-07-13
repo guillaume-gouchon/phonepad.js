@@ -1,0 +1,118 @@
+@import "compass";
+
+$bounceDuration: 500ms;
+$btnOpacity: 0.6;
+$axisBackground: #000;
+$axisBorderRadius: 35%;
+
+#phonepad {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background: #111;
+	border-radius: 60px;
+}
+
+.axis, .buttons {
+	display: inline-block;
+	top: 0px;
+	height: 100%;
+	width: 40%;
+	margin: 0;
+	padding: 0px;
+	font-size: 0;
+}
+
+.axis {
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.5);
+	box-shadow: inset 0px 0px 14px 6px rgba(50, 50, 50, 0.75);
+
+	div {
+		display: inline-block;
+		height: 33%;
+		width: 33%;
+		margin: 0;
+		opacity: $btnOpacity;
+
+		&.active {
+			opacity: 1.0;
+		}
+	}
+
+	.axisN {
+		width: 34%;
+		background: radial-gradient(ellipse at center, #333 10%, #000 100%);
+		border-radius: $axisBorderRadius $axisBorderRadius 0px 0px;
+		box-shadow: inset 0px 0px 14px 6px rgba(50, 50, 50, 0.75);
+	}
+
+	.axisS {
+		width: 34%;
+		background: radial-gradient(ellipse at center, #333 10%, #000 100%);
+		border-radius: 0px 0px $axisBorderRadius $axisBorderRadius;
+		box-shadow: inset 0px 0px 14px 6px rgba(50, 50, 50, 0.75);
+	}
+
+	.axisE {
+		height: 34%;
+		background: radial-gradient(ellipse at center, #333 10%, #000 100%);
+		border-radius: 0px $axisBorderRadius $axisBorderRadius 0px;
+		box-shadow: inset 0px 0px 14px 6px rgba(50, 50, 50, 0.75);
+	}
+
+	.axisW {
+		height: 34%;
+		background: radial-gradient(ellipse at center, #333 10%, #000 100%);
+		border-radius: $axisBorderRadius 0px 0px $axisBorderRadius;
+		box-shadow: inset 0px 0px 14px 6px rgba(50, 50, 50, 0.75);
+	}
+
+	.axisC {
+		height: 34%;
+		width: 34%;
+		background: radial-gradient(ellipse at center, #333 10%, #000 100%);
+		box-shadow: inset 0px 0px 7px 3px rgba(50, 50, 50, 0.75);
+	}
+}
+
+.buttons {
+	margin-left: 18%;
+
+	div {
+		display: inline-block;
+		height: 33%;
+		width: 33%;
+		opacity: $btnOpacity;
+		border-radius: 100%;
+		font-size: 3rem;
+		color: #fff;
+		text-shadow: 2px 2px 2px #000;
+		text-align: center;
+		box-shadow: inset 0px 0px 12px 6px rgba(220, 220, 220, 0.75);
+		user-select: none;
+
+		&.active {
+			opacity: 1.0;
+		}
+	}
+
+	.btnY {
+		margin: 0px 33%;
+		background: radial-gradient(ellipse at center, yellow 10%, #000 100%);
+	}
+
+	.btnX {
+		background: radial-gradient(ellipse at center, blue 10%, #000 100%);
+	}
+
+	.btnB {
+		margin-left: 34%;
+		background: radial-gradient(ellipse at center, red 10%, #000 100%);
+	}
+
+	.btnA {
+		margin-left: 33%;
+		background: radial-gradient(ellipse at center, green 10%, #000 100%);
+	}
+}
