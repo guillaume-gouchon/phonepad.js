@@ -80,9 +80,7 @@ module.exports = function (grunt) {
 
     removelogging: {
       dist: {
-        src: '<%= yeoman.dist %>/phonepad.js',
-        dest: '<%= yeoman.dist %>/phonepad.js',
-
+        src: '<%= yeoman.dist %>/**/*.js',
         options: {
           // see below for options. this is optional.
         }

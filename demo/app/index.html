@@ -3,214 +3,213 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" manifest="demo-phonepad.appcache"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Phonepad.js</title>
-        <meta name="description" content="Use your phone as a gamepad to play HTML5 Games !">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-        
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Phonepad.js</title>
+  <meta name="description" content="Use your phone as a gamepad to play HTML5 Games !">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-        <link rel="shortcut icon" sizes="196x196" href="apple-touch-icon.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57.png" />
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
-        <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="../../phonepad/.tmp/styles/phonepad.css">
-        <!-- endbuild -->
-    </head>
-    <body>
-        <!--[if lt IE 10]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="shortcut icon" sizes="196x196" href="apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57.png" />
 
-        <div id="gameId"></div>
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="../../phonepad/.tmp/styles/phonepad.css">
+  <!-- endbuild -->
+</head>
 
-        <div id="pads">
-            <div class="phonepad">
-                <div class="axis">
-                    <div class="axisNW"></div>
-                    <div class="axisN"></div>
-                    <div class="axisNE"></div>
-                    <div class="axisW"></div>
-                    <div class="axisC"></div>
-                    <div class="axisE"></div>
-                    <div class="axisSW"></div>
-                    <div class="axisS"></div>
-                    <div class="axisSE"></div>
-                </div>
+<body>
+<!--[if lt IE 10]>
+  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
 
-                <div class="buttons">
-                    <div class="btnY"></div>
-                    <div class="btnX"></div>
-                    <div class="btnB"></div>
-                    <div class="btnA"></div>
-                </div>            
-            </div>
-            <div class="phonepad">
-                <div class="axis">
-                    <div class="axisNW"></div>
-                    <div class="axisN"></div>
-                    <div class="axisNE"></div>
-                    <div class="axisW"></div>
-                    <div class="axisC"></div>
-                    <div class="axisE"></div>
-                    <div class="axisSW"></div>
-                    <div class="axisS"></div>
-                    <div class="axisSE"></div>
-                </div>
+  <div id="gameId">GAME ID : <span></span></div>
 
-                <div class="buttons">
-                    <div class="btnY"></div>
-                    <div class="btnX"></div>
-                    <div class="btnB"></div>
-                    <div class="btnA"></div>
-                </div>            
-            </div>
-            <div class="phonepad">
-                <div class="axis">
-                    <div class="axisNW"></div>
-                    <div class="axisN"></div>
-                    <div class="axisNE"></div>
-                    <div class="axisW"></div>
-                    <div class="axisC"></div>
-                    <div class="axisE"></div>
-                    <div class="axisSW"></div>
-                    <div class="axisS"></div>
-                    <div class="axisSE"></div>
-                </div>
+  <div id="pads">
+    <div class="phonepad">
+      <div class="axis">
+        <div class="axisNW"></div>
+        <div class="axisN"></div>
+        <div class="axisNE"></div>
+        <div class="axisW"></div>
+        <div class="axisC"></div>
+        <div class="axisE"></div>
+        <div class="axisSW"></div>
+        <div class="axisS"></div>
+        <div class="axisSE"></div>
+      </div>
 
-                <div class="buttons">
-                    <div class="btnY"></div>
-                    <div class="btnX"></div>
-                    <div class="btnB"></div>
-                    <div class="btnA"></div>
-                </div>            
-            </div>
-            <div class="phonepad">
-                <div class="axis">
-                    <div class="axisNW"></div>
-                    <div class="axisN"></div>
-                    <div class="axisNE"></div>
-                    <div class="axisW"></div>
-                    <div class="axisC"></div>
-                    <div class="axisE"></div>
-                    <div class="axisSW"></div>
-                    <div class="axisS"></div>
-                    <div class="axisSE"></div>
-                </div>
+      <div class="buttons">
+        <div class="btnY"></div>
+        <div class="btnX"></div>
+        <div class="btnB"></div>
+        <div class="btnA"></div>
+      </div>            
+    </div>
+    <div class="phonepad">
+      <div class="axis">
+        <div class="axisNW"></div>
+        <div class="axisN"></div>
+        <div class="axisNE"></div>
+        <div class="axisW"></div>
+        <div class="axisC"></div>
+        <div class="axisE"></div>
+        <div class="axisSW"></div>
+        <div class="axisS"></div>
+        <div class="axisSE"></div>
+      </div>
 
-                <div class="buttons">
-                    <div class="btnY"></div>
-                    <div class="btnX"></div>
-                    <div class="btnB"></div>
-                    <div class="btnA"></div>
-                </div>            
-            </div>
-            <div class="phonepad">
-                <div class="axis">
-                    <div class="axisNW"></div>
-                    <div class="axisN"></div>
-                    <div class="axisNE"></div>
-                    <div class="axisW"></div>
-                    <div class="axisC"></div>
-                    <div class="axisE"></div>
-                    <div class="axisSW"></div>
-                    <div class="axisS"></div>
-                    <div class="axisSE"></div>
-                </div>
+      <div class="buttons">
+        <div class="btnY"></div>
+        <div class="btnX"></div>
+        <div class="btnB"></div>
+        <div class="btnA"></div>
+      </div>            
+    </div>
+    <div class="phonepad">
+      <div class="axis">
+        <div class="axisNW"></div>
+        <div class="axisN"></div>
+        <div class="axisNE"></div>
+        <div class="axisW"></div>
+        <div class="axisC"></div>
+        <div class="axisE"></div>
+        <div class="axisSW"></div>
+        <div class="axisS"></div>
+        <div class="axisSE"></div>
+      </div>
 
-                <div class="buttons">
-                    <div class="btnY"></div>
-                    <div class="btnX"></div>
-                    <div class="btnB"></div>
-                    <div class="btnA"></div>
-                </div>            
-            </div>
-            <div class="phonepad">
-                <div class="axis">
-                    <div class="axisNW"></div>
-                    <div class="axisN"></div>
-                    <div class="axisNE"></div>
-                    <div class="axisW"></div>
-                    <div class="axisC"></div>
-                    <div class="axisE"></div>
-                    <div class="axisSW"></div>
-                    <div class="axisS"></div>
-                    <div class="axisSE"></div>
-                </div>
+      <div class="buttons">
+        <div class="btnY"></div>
+        <div class="btnX"></div>
+        <div class="btnB"></div>
+        <div class="btnA"></div>
+      </div>            
+    </div>
+    <div class="phonepad">
+      <div class="axis">
+        <div class="axisNW"></div>
+        <div class="axisN"></div>
+        <div class="axisNE"></div>
+        <div class="axisW"></div>
+        <div class="axisC"></div>
+        <div class="axisE"></div>
+        <div class="axisSW"></div>
+        <div class="axisS"></div>
+        <div class="axisSE"></div>
+      </div>
 
-                <div class="buttons">
-                    <div class="btnY"></div>
-                    <div class="btnX"></div>
-                    <div class="btnB"></div>
-                    <div class="btnA"></div>
-                </div>            
-            </div>
-            <div class="phonepad">
-                <div class="axis">
-                    <div class="axisNW"></div>
-                    <div class="axisN"></div>
-                    <div class="axisNE"></div>
-                    <div class="axisW"></div>
-                    <div class="axisC"></div>
-                    <div class="axisE"></div>
-                    <div class="axisSW"></div>
-                    <div class="axisS"></div>
-                    <div class="axisSE"></div>
-                </div>
+      <div class="buttons">
+        <div class="btnY"></div>
+        <div class="btnX"></div>
+        <div class="btnB"></div>
+        <div class="btnA"></div>
+      </div>            
+    </div>
+    <div class="phonepad">
+      <div class="axis">
+        <div class="axisNW"></div>
+        <div class="axisN"></div>
+        <div class="axisNE"></div>
+        <div class="axisW"></div>
+        <div class="axisC"></div>
+        <div class="axisE"></div>
+        <div class="axisSW"></div>
+        <div class="axisS"></div>
+        <div class="axisSE"></div>
+      </div>
 
-                <div class="buttons">
-                    <div class="btnY"></div>
-                    <div class="btnX"></div>
-                    <div class="btnB"></div>
-                    <div class="btnA"></div>
-                </div>            
-            </div>
-            <div class="phonepad">
-                <div class="axis">
-                    <div class="axisNW"></div>
-                    <div class="axisN"></div>
-                    <div class="axisNE"></div>
-                    <div class="axisW"></div>
-                    <div class="axisC"></div>
-                    <div class="axisE"></div>
-                    <div class="axisSW"></div>
-                    <div class="axisS"></div>
-                    <div class="axisSE"></div>
-                </div>
+      <div class="buttons">
+        <div class="btnY"></div>
+        <div class="btnX"></div>
+        <div class="btnB"></div>
+        <div class="btnA"></div>
+      </div>            
+    </div>
+    <div class="phonepad">
+      <div class="axis">
+        <div class="axisNW"></div>
+        <div class="axisN"></div>
+        <div class="axisNE"></div>
+        <div class="axisW"></div>
+        <div class="axisC"></div>
+        <div class="axisE"></div>
+        <div class="axisSW"></div>
+        <div class="axisS"></div>
+        <div class="axisSE"></div>
+      </div>
 
-                <div class="buttons">
-                    <div class="btnY"></div>
-                    <div class="btnX"></div>
-                    <div class="btnB"></div>
-                    <div class="btnA"></div>
-                </div>            
-            </div>
-        </div>
+      <div class="buttons">
+        <div class="btnY"></div>
+        <div class="btnX"></div>
+        <div class="btnB"></div>
+        <div class="btnA"></div>
+      </div>            
+    </div>
+    <div class="phonepad">
+      <div class="axis">
+        <div class="axisNW"></div>
+        <div class="axisN"></div>
+        <div class="axisNE"></div>
+        <div class="axisW"></div>
+        <div class="axisC"></div>
+        <div class="axisE"></div>
+        <div class="axisSW"></div>
+        <div class="axisS"></div>
+        <div class="axisSE"></div>
+      </div>
 
-        <!-- build:js scripts/vendor.js -->
-        <!-- bower:js -->
-        <script src="bower_components/jquery/jquery.js"></script>
-        <script src="bower_components/peerjs/peer.js"></script>
-        <script src="../../src/gamepad.js"></script>
-        <script src="../../src/network.js"></script>
-        <script src="../../src/phonepad.js"></script>
-        <script src="../../src/phonepadCallbacks.js"></script>
-        <!-- endbower -->
-        <!-- endbuild -->
+      <div class="buttons">
+        <div class="btnY"></div>
+        <div class="btnX"></div>
+        <div class="btnB"></div>
+        <div class="btnA"></div>
+      </div>            
+    </div>
+    <div class="phonepad">
+      <div class="axis">
+        <div class="axisNW"></div>
+        <div class="axisN"></div>
+        <div class="axisNE"></div>
+        <div class="axisW"></div>
+        <div class="axisC"></div>
+        <div class="axisE"></div>
+        <div class="axisSW"></div>
+        <div class="axisS"></div>
+        <div class="axisSE"></div>
+      </div>
 
-        <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="scripts/main.js"></script>
-        <!-- endbuild -->
+      <div class="buttons">
+        <div class="btnY"></div>
+        <div class="btnX"></div>
+        <div class="btnB"></div>
+        <div class="btnA"></div>
+      </div>            
+    </div>
+  </div>
 
-        <script src="http://warnode.com:7070/socket.io/socket.io.js"></script>
-        
+  <!-- build:js scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/jquery.js"></script>
+  <script src="bower_components/peerjs/peer.js"></script>
+  <script src="bower_components/phonepad.js/dist/phonepad.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js({app,.tmp}) scripts/main.js -->
+  <script src="scripts/main.js"></script>
+  <!-- endbuild -->
+
+  <script src="http://warnode.com:7070/socket.io/socket.io.js"></script>
+
 </body>
+
 </html>

@@ -1,10 +1,9 @@
 {
   "name": "demo-phonepad.js",
   "version": "0.0.1",
-  "private": false,
   "dependencies": {
     "jquery": "~1.10.2",
-    "peerjs": "~0.3.8"
-  },
-  "devDependencies": {}
+    "peerjs": "~0.3.8",
+    "phonepad.js": "~0.0.1"
+  }
 }

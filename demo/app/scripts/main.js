@@ -1,17 +1,22 @@
+// current connected players
 var players = [];
 
 $(function() {
 
+	// get phone pad singleton instance
 	var phonepad = Phonepad.getInstance();
 
+	// gamepads may be not supported
 	phonepad.on('padNotSupported', function (padType) {
 		console.log(padType, 'not supported');
 	});
 
+	// when connected, display the gameId so that the phonepad players can connect to the game
 	phonepad.on('connected', function (gameId) {
-		$('#gameId').html(gameId);
+		$('#gameIds span').html(gameId);
 	});
 
+	// add new player
 	phonepad.on('playerConnected', function (pId, padType) {
 		if (players.indexOf(pId) == -1) {
 			players.push(pId);
@@ -19,6 +24,7 @@ $(function() {
 		}
 	});
 
+	// remove player when disconnected
 	phonepad.on('playerDisconnected', function (pId) {
 		var playerIndex = players.indexOf(pId);
 		if (playerIndex >= 0) {
@@ -27,20 +33,31 @@ $(function() {
 		}
 	});
 
+	// update controller when new commands are received
 	phonepad.on('commandsReceived', function (commands) {
 		updateController(commands);
 	});
 
+	// GO !
 	phonepad.start();
-	
+
 });
 
+
+/**
+*		Show / hide controllers depending on the number of players connected
+*/
 function updatePlayersLayout() {
 	$('.phonepad').removeClass('active');
 	$('#pads > .phonepad:lt(' + players.length + ')').addClass('active');
 }
 
+
+/**
+*		Update controllers as we receive updated commands
+*/
 function updateController(commands) {
+	// get player's controller
 	var controller = $('.phonepad:nth-child(' + (players.indexOf(commands.pId) + 1) + ')');
 
 	$('div', controller).removeClass('active');

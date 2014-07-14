@@ -1,7 +1,4 @@
-phonepad.js
-================
-
-# Simply add Gamepads and Phonepads supports to your HTML5 game !
+# phonepad.js : Add Gamepads and Phonepads support to your HTML5 game !
 
 ## Demo
 
@@ -41,11 +38,11 @@ Phonepad are connecting to the game using ***WebRTC*** if available (it uses ***
 
 ## More
 
-If you want to create your own implementation of phonepads or just dig out how it work, this repository also contains :
+If you want to create your own implementation of phonepads or just dig out how it works, this repository also contains :
 
-* the ***server source***. It is used as a websockets bridge between the phonepads and the HTML5 game.
-* the ***phonepad web-app***
-* the ***demo website*** which uses this library
+* the ***server source code***. It is used as a websockets bridge between the phonepads and the HTML5 game.
+* the ***phonepad web-app***.
+* the ***demo website*** which uses this library.
 
 
 
