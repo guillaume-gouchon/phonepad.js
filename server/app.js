@@ -57,7 +57,7 @@ io.sockets.on('connection', function (socket) {
     if (gameSocket != null) {
       if (socket.playerId != null) {
         // a player has been disconnected
-        gameSocket.emit('disconnect', socket.playerId);
+        // gameSocket.emit('disconnect', socket.playerId);
       } else  {
         // the game has been disconnected
         delete games[socket.gameId];
