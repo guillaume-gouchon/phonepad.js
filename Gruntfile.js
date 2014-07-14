@@ -13,6 +13,7 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
 
   grunt.loadNpmTasks('grunt-remove-logging');
+  grunt.loadNpmTasks('grunt-license');
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
@@ -64,6 +65,27 @@ module.exports = function (grunt) {
         }
       }
     },
+
+    concat: {
+      dist: {
+        files: {
+          '<%= yeoman.dist %>/phonepad.js': [
+            '<%= yeoman.app %>/{,*/}*.js'
+          ]
+        }
+      }
+    },
+
+    removelogging: {
+      dist: {
+        src: '<%= yeoman.dist %>/phonepad.js',
+        dest: '<%= yeoman.dist %>/phonepad.js',
+
+        options: {
+          // see below for options. this is optional.
+        }
+      }
+    },
    
     uglify: {
       dist: {
@@ -75,15 +97,14 @@ module.exports = function (grunt) {
       }
     },
 
-    concat: {
-      dist: {
-        files: {
-          '<%= yeoman.dist %>/phonepad.js': [
-            '<%= yeoman.app %>/{,*/}*.js'
-          ]
-        }
-      }
-    }
+    license: {
+      options: {
+        // Task-specific options go here.
+      },
+      your_target: {
+        // Target-specific file lists and/or options go here.
+      },
+    },
 
   });
 
@@ -105,6 +126,7 @@ module.exports = function (grunt) {
     'clean:dist',
     // 'jshint',
     'concat',
+    'removelogging',
     'uglify'
   ]);
 
