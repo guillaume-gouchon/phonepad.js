@@ -1,7 +1,6 @@
 {
   "name": "phonepad.js",
   "version": "0.0.1",
-  "private": false,
   "main": "dist/phonepad.js",
   "ignore": [
 	"src",
@@ -11,7 +10,7 @@
 	"Gruntfile.js",
 	"package.json",
 	"README.md",
-  "demo/",
+  "demo",
   "phonepad",
   "server"
   ],

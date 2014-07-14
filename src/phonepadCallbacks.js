@@ -1,47 +1,49 @@
-function PhonepadCallbacks () {
+'use strict';
 
-	var callbacks = {
-		padNotSupported: null,
-		connected: null,
-		playerConnected: null,
-		playerDisconnected: null,
-		commandsReceived: null
-	};
+function PhonepadCallbacks() {
 
-	this.onPadNotSupported = function (padType) {
-		if (callbacks.padNotSupported != null) {
-			callbacks.padNotSupported(padType);
-		}
-	};
+  var callbacks = {
+    padNotSupported: null,
+    connected: null,
+    playerConnected: null,
+    playerDisconnected: null,
+    commandsReceived: null
+  };
 
-	this.onConnected = function (gameId) {
-		if (callbacks.connected != null) {
-			callbacks.connected(gameId);
-		}
-	};
+  this.onPadNotSupported = function (padType) {
+    if (callbacks.padNotSupported !== null) {
+      callbacks.padNotSupported(padType);
+    }
+  };
 
-	this.onPlayerConnected = function (playerId, padType) {
-		if (callbacks.playerConnected != null) {
-			callbacks.playerConnected(playerId, padType);
-		}
-	};
+  this.onConnected = function (gameId) {
+    if (callbacks.connected !== null) {
+      callbacks.connected(gameId);
+    }
+  };
 
-	this.onPlayerDisconnected = function (playerId) {
-		if (callbacks.playerDisconnected != null) {
-			callbacks.playerDisconnected(playerId);
-		}
-	};
+  this.onPlayerConnected = function (playerId, padType) {
+    if (callbacks.playerConnected !== null) {
+      callbacks.playerConnected(playerId, padType);
+    }
+  };
 
-	this.onCommandsReceived = function (commands) {
-		if (callbacks.commandsReceived != null) {
-			callbacks.commandsReceived(commands);
-		}
-	};
+  this.onPlayerDisconnected = function (playerId) {
+    if (callbacks.playerDisconnected !== null) {
+      callbacks.playerDisconnected(playerId);
+    }
+  };
 
-	this.setListener = function (type, callback) {
-		if (type in callbacks) {
-			callbacks[type] = callback;
-		}
-	};
+  this.onCommandsReceived = function (commands) {
+    if (callbacks.commandsReceived !== null) {
+      callbacks.commandsReceived(commands);
+    }
+  };
+
+  this.setListener = function (type, callback) {
+    if (type in callbacks) {
+      callbacks[type] = callback;
+    }
+  };
 
 }

@@ -38,5 +38,5 @@ function getCookie(cookieName) {
 *		Is WebRTC capable ?
 */
 function isWebRTCCapable() {
-	return /iP(hone|od)/.test(window.navigator.userAgent);
+	return !/iP(hone|od)/.test(window.navigator.userAgent);
 }
