@@ -75,7 +75,7 @@ function GamepadHelper () {
       var gamepadsChanged = false;
 
       for (var k = 0; k < rawGamepads.length; k++) {
-        if (rawGamepads[k] !== null && rawGamepads[k].id !== prevRawGamepadTypes[k]) {
+        if (rawGamepads[k] != null && rawGamepads[k].id !== prevRawGamepadTypes[k]) {
           gamepadsChanged = true;
           prevRawGamepadTypes[k] = rawGamepads[k].id;
         }
@@ -271,31 +271,31 @@ function PhonepadCallbacks() {
   };
 
   this.onPadNotSupported = function (padType) {
-    if (callbacks.padNotSupported !== null) {
+    if (callbacks.padNotSupported != null) {
       callbacks.padNotSupported(padType);
     }
   };
 
   this.onConnected = function (gameId) {
-    if (callbacks.connected !== null) {
+    if (callbacks.connected != null) {
       callbacks.connected(gameId);
     }
   };
 
   this.onPlayerConnected = function (playerId, padType) {
-    if (callbacks.playerConnected !== null) {
+    if (callbacks.playerConnected != null) {
       callbacks.playerConnected(playerId, padType);
     }
   };
 
   this.onPlayerDisconnected = function (playerId) {
-    if (callbacks.playerDisconnected !== null) {
+    if (callbacks.playerDisconnected != null) {
       callbacks.playerDisconnected(playerId);
     }
   };
 
   this.onCommandsReceived = function (commands) {
-    if (callbacks.commandsReceived !== null) {
+    if (callbacks.commandsReceived != null) {
       callbacks.commandsReceived(commands);
     }
   };
