@@ -1,11 +1,11 @@
 {
   "name": "phonepad.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "http://phonepad.gouchon.com",
   "authors": [
     "Guillaume Gouchon <guillaume.gouchon@gmail.com>"
   ],
-  "description": "Simply add Gamepads and Phonepads support to your HTML5 game !",
+  "description": "Simply add Gamepads and Phonepads support to your HTML5 games !",
   "main": "dist/phonepad.js",
   "keywords": [
     "gamepad",

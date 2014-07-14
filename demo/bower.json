@@ -4,6 +4,7 @@
   "dependencies": {
     "jquery": "~1.10.2",
     "peerjs": "~0.3.8",
-    "phonepad.js": "~0.0.1"
+    "phonepad.js": "~0.0.2",
+    "modernizr": "~2.8.3"
   }
 }

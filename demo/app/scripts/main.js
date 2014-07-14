@@ -13,7 +13,7 @@ $(function() {
 
 	// when connected, display the gameId so that the phonepad players can connect to the game
 	phonepad.on('connected', function (gameId) {
-		$('#gameIds span').html(gameId);
+		$('#gameId b').html(gameId);
 	});
 
 	// add new player

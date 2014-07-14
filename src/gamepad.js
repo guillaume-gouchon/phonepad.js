@@ -74,7 +74,7 @@ function GamepadHelper () {
       var gamepadsChanged = false;
 
       for (var k = 0; k < rawGamepads.length; k++) {
-        if (rawGamepads[k] != null && rawGamepads[k].id !== prevRawGamepadTypes[k]) {
+        if (rawGamepads[k] != null && rawGamepads[k].id != prevRawGamepadTypes[k]) {
           gamepadsChanged = true;
           prevRawGamepadTypes[k] = rawGamepads[k].id;
         }

@@ -1,4 +1,4 @@
-# Add Gamepads and Phonepads support to your HTML5 game !
+# Add Gamepads and Phonepads support to your HTML5 games !
 
 ## Demo
 
@@ -34,7 +34,7 @@ Gamepads support is using HTML5 GamePads API. Just plug in/out some USB Gamepads
 
 ### Use Phonepads
 To use your phone as a Phonepad, go on ***[http://pad.gouchon.com](http://pad.gouchon.com)*** with your phone, and then join the game using the ***gameId*** displayed on the HTML5 game.  
-Phonepad are connecting to the game using ***WebRTC*** if available (it uses ***[peer.js library](http://peerjs.com)***), or ***websockets*** if not.
+Phonepads are connecting to the game using ***WebRTC*** if available (it uses ***[peer.js library](http://peerjs.com)***), or ***websockets*** if not.
 
 ## More
 

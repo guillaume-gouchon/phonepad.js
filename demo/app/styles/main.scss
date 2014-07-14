@@ -2,46 +2,159 @@
 
 @include font-face("myFont", font-files("font.ttf"));
 
-.hide {
-	display: none!important;
-}
-
 body {
 	padding: 0px;
 	margin: 0px;
-	background: #4096ee;
+	background: repeating-linear-gradient(
+	  45deg,
+	  #C9D1FF,
+  	#C9D1FF 10px,
+	  #BFC9FF 10px,
+	  #BFC9FF 20px
+	);
 }
 
-#gameId {
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	padding: 15px;
-	font-size: 2.0em;
-	color: #eee;
-	background: #111;
+.pull-right {
+	float: right;
 }
 
-#pads {
-	width: 100%;
-	text-align: center;
-	margin-top: 80px;
-}
-
-.phonepad {
-	display: inline-block;
-	height: 200px;
-	width: 30%;
-	background: #111;
-	text-align: left;
-	opacity: 0.4;
-	@extend .easeTransition;
-
-	&.active {
-		opacity: 1.0;
-	}
+.hide {
+	display: none!important;
 }
 
 .easeTransition {
   transition: all 400ms cubic-bezier(0.000, 0.000, 0.580, 1.000);
 }
+
+header {
+	background: #fff;
+	height: 60px;
+	line-height: 60px;
+	width: 100%;
+
+	.title {
+		font-size: 1.2em;
+
+		a {
+			img {
+				margin-left: 10px;
+				vertical-align: middle;
+				height: 40px;
+				width: 40px;
+			}
+
+			&:hover {
+				opacity: 0.4;
+			}
+		}
+	}
+
+	div, small {
+		font-family: 'myFont';
+		display: inline-block;
+		color: #111;
+		padding: 0px 40px;
+	}
+
+	small {
+		color: #333;
+		font-style: italic;
+	}
+}
+
+h3 {
+	text-align: left;
+	color: #333;
+	font-family: 'myFont';
+	border-bottom: 1px solid #eee;
+}
+
+pre {
+	background: #f0f0f0;
+	padding: 10px;
+	margin: 0;
+}
+
+
+p, ol {
+	font-family: verdana;
+	font-size: 1.3em;
+	color: #333;
+	text-align: justify;
+}
+
+#instructions {
+	margin-top: 40px;
+	text-align: center;
+
+	.col2 {
+		display: inline-block;
+		width: 30%;
+		vertical-align: top;
+		margin: 0px 5%;
+		background: white;
+		padding: 20px;
+	}
+}
+
+#demo {
+	margin: 40px;
+	background: white;
+	padding: 20px 40px;
+
+	#gameId {
+		font-family: 'myFont';
+
+		b {
+			display: inline-block;
+			width: 80px;
+			color: #879AFF;
+		}
+	}
+
+	#pads {
+		width: 100%;
+		text-align: center;
+	}
+
+	.phonepad {
+		display: inline-block;
+		height: 160px;
+		width: 20%;
+		background: #111;
+		text-align: left;
+		opacity: 0.4;
+		@extend .easeTransition;
+		border-radius: 20px;
+		margin: 15px;
+
+		&.active {
+			opacity: 1.0;
+		}
+	}
+}
+
+#setup {
+	margin: 40px;
+	background: white;
+	padding: 20px 40px;
+}
+
+footer {
+	padding : 10px;
+	background: white;
+	text-align: center;
+	font-family: 'myFont';
+	color: #999;
+
+	a {
+		color: #555;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+			color: #333;
+		}
+	}
+}
+
