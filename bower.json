@@ -5,7 +5,7 @@
   "authors": [
     "Guillaume Gouchon <guillaume.gouchon@gmail.com>"
   ],
-  "description": "Simply add Gamepads and Phonepads supports to your HTML5 game !",
+  "description": "Simply add Gamepads and Phonepads support to your HTML5 game !",
   "main": "dist/phonepad.js",
   "keywords": [
     "gamepad",

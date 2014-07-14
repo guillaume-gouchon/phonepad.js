@@ -1,4 +1,4 @@
-# phonepad.js : Add Gamepads and Phonepads support to your HTML5 game !
+# Add Gamepads and Phonepads support to your HTML5 game !
 
 ## Demo
 
