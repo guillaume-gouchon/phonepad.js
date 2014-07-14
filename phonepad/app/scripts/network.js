@@ -13,15 +13,14 @@ function Network() {
 		if(!isWebRTCCapable()) {
 			console.log('Connecting through websockets...');
 			socket = io.connect(WS_SERVER_URL);
-			var _this = this;
+
+			// send player id to game
+		  this.sendMessage(Network.MESSAGE_TYPES.playerId, {
+		  	gameId: gameId,
+		  	pId: playerId
+		  });
+
 			socket.on('connected', function () {
-
-				// send player id to game
-			  _this.sendMessage(Network.MESSAGE_TYPES.playerId, {
-			  	gameId: gameId,
-			  	pId: playerId
-			  });
-
 				onConnected();
 			});
 

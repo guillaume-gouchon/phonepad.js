@@ -34,7 +34,7 @@ io.sockets.on('connection', function (socket) {
   socket.on('pId', function (data) {
     var gameSocket = games[data.gameId];
     if (gameSocket != null) {
-      socket.pId = data.pId;
+      socket.playerId = data.pId;
       socket.gameId = data.gameId;
       gameSocket.emit('pId', data.pId);
       socket.emit('connected');
@@ -45,9 +45,9 @@ io.sockets.on('connection', function (socket) {
 
   // commands to dispatch !
   socket.on('comm', function (data) {
-     var gameSocket = games[data.gameId];
+     var gameSocket = games[socket.gameId];
     if (gameSocket != null) {
-      gameSocket.emit('comm', data.comm);
+      gameSocket.emit('comm', data);
     }
   });
 
@@ -55,9 +55,9 @@ io.sockets.on('connection', function (socket) {
   socket.on('disconnect', function () {
     var gameSocket = games[socket.gameId];
     if (gameSocket != null) {
-      if (socket.pId != null) {
+      if (socket.playerId != null) {
         // a player has been disconnected
-        gameSocket.emit('disconnect', socket.pId);
+        gameSocket.emit('disconnect', socket.playerId);
       } else  {
         // the game has been disconnected
         delete games[socket.gameId];
