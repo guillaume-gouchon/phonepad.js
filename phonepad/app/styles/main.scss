@@ -70,12 +70,12 @@ body {
 }
 
 @keyframes bounce {
-    0% {
-        transform: scale(1.0);
-    }
-    100% {
-        transform: scale(0.95);
-    }
+  0% {
+      transform: scale(1.0);
+  }
+  100% {
+      transform: scale(0.95);
+  }
 }
 
 #loading {
@@ -118,19 +118,19 @@ body {
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    };
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  };
 }
 
 @keyframes spinoff {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(-360deg);
-    };
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(-360deg);
+  };
 }

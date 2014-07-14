@@ -1,11 +1,10 @@
 {
-  "name": "app-phonepad.js",
+  "name": "web-app-phonepad.js",
   "version": "0.0.1",
   "private": false,
   "dependencies": {
     "modernizr": "~2.6.2",
     "jquery": "~1.10.2",
     "peerjs": "~0.3.8"
-  },
-  "devDependencies": {}
+  }
 }

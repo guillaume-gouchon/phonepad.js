@@ -86,11 +86,11 @@ var Phonepad = (function () {
     }
 
 		function press(button) {
-			button.addClass('active');
+			// button.addClass('active');
 		};
 
 		function release(button) {
-			button.removeClass('active');
+			// button.removeClass('active');
 		};
 
     function connectToGame(chosenGameId) {
@@ -107,6 +107,7 @@ var Phonepad = (function () {
 
 		function onConnected() {
 			console.log('Now connected to the game !');
+			clearTimeout(connectionTimeout);
 			$('#loading').addClass('hide');
 			$('#joinGame').addClass('hide');
 

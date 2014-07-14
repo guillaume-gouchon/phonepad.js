@@ -30,7 +30,8 @@ function Network() {
 
     socket.on('disconnect', function (pId) {
       console.log('A player has been disconnected', pId);
-      callbacks.onPlayerDisconnected(pId);
+      // takes too much time to be fired...
+      // callbacks.onPlayerDisconnected(pId);
     });
   };
 
@@ -60,7 +61,8 @@ function Network() {
         // remove disconnected players
         conn.on('close', function () {
           console.log('A player has been disconnected', conn.pId);
-          callbacks.onPlayerDisconnected(conn.pId);
+          // takes too much time to be fired...
+          // callbacks.onPlayerDisconnected(conn.pId);
         });
       });
     } catch (e) {

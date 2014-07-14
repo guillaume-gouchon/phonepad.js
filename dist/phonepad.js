@@ -1,4 +1,4 @@
-/*! phonepad.js build: 0.0.1. MIT Licensed. Copyright(c) 2014 Guillaume Gouchon <guillaume.gouchon@gmail.com> */
+/*! phonepad.js build: 0.0.3. MIT Licensed. Copyright(c) 2014 Guillaume Gouchon <guillaume.gouchon@gmail.com> */
 'use strict';
 
 function GamepadHelper () {
@@ -75,7 +75,7 @@ function GamepadHelper () {
       var gamepadsChanged = false;
 
       for (var k = 0; k < rawGamepads.length; k++) {
-        if (rawGamepads[k] != null && rawGamepads[k].id !== prevRawGamepadTypes[k]) {
+        if (rawGamepads[k] != null && rawGamepads[k].id != prevRawGamepadTypes[k]) {
           gamepadsChanged = true;
           prevRawGamepadTypes[k] = rawGamepads[k].id;
         }
@@ -158,7 +158,8 @@ function Network() {
 
     socket.on('disconnect', function (pId) {
       
-      callbacks.onPlayerDisconnected(pId);
+      // takes too much time to be fired...
+      // callbacks.onPlayerDisconnected(pId);
     });
   };
 
@@ -188,7 +189,8 @@ function Network() {
         // remove disconnected players
         conn.on('close', function () {
           
-          callbacks.onPlayerDisconnected(conn.pId);
+          // takes too much time to be fired...
+          // callbacks.onPlayerDisconnected(conn.pId);
         });
       });
     } catch (e) {
