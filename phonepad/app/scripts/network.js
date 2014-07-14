@@ -9,18 +9,25 @@ function Network() {
 	var webRTCConnector = null;
 	var socket = null;
 
-	this.connect = function (gameId, playerId, onConnected) {
-		if(/iP(hone|od)/.test(window.navigator.userAgent)) {
+	this.connect = function (gameId, playerId, onConnected, onError) {
+		if(!isWebRTCCapable()) {
 			console.log('Connecting through websockets...');
 			socket = io.connect(WS_SERVER_URL);
+			var _this = this;
+			socket.on('connected', function () {
 
-		  // send player id to game
-		  this.sendMessage(Network.MESSAGE_TYPES.playerId, {
-		  	gameId: gameId,
-		  	pId: playerId
+				// send player id to game
+			  _this.sendMessage(Network.MESSAGE_TYPES.playerId, {
+			  	gameId: gameId,
+			  	pId: playerId
+			  });
+
+				onConnected();
+			});
+
+		  socket.on('error', function () {
+		  	onError();
 		  });
-
-			onConnected();
 		} else {
 			console.log('Connecting through webRTC...');
 			var peer = new Peer(null, {key: PEER_API_KEY});

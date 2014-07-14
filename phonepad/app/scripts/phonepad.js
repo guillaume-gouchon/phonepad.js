@@ -21,6 +21,7 @@ var Phonepad = (function () {
 		var isConnecting = false;
 		var networkClient = new Network();
 		var controller = null;
+		var connectionTimeout = null;
 
 		generatePlayerId();
 		controller = new Controller(playerId);
@@ -96,12 +97,11 @@ var Phonepad = (function () {
     	if (!isConnecting && chosenGameId.length > 0) {
   			$('#loading').removeClass('hide');
 				gameId = chosenGameId;
-				networkClient.connect(gameId, playerId, onConnected);
 				isConnecting = true;
-				setTimeout(function () {
-					isConnecting = false;
-					$('#loading').addClass('hide');
+				connectionTimeout = setTimeout(function () {
+					onConnectionError();
 				}, 3000);
+				networkClient.connect(gameId, playerId, onConnected, onConnectionError);
 			}
     }
 
@@ -113,6 +113,13 @@ var Phonepad = (function () {
 			// set cookies
 			setCookie(COOKIE_GAME_ID, gameId, COOKIE_EXPIRATION);
 			bindPadEvents();
+		}
+
+		function onConnectionError() {
+			console.log('Cannot connect');
+			isConnecting = false;
+			$('#loading').addClass('hide');
+			clearTimeout(connectionTimeout);
 		}
 
 		function bindPadEvents() {

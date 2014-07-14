@@ -32,3 +32,11 @@ function getCookie(cookieName) {
 	}
 	return null;
 }
+
+
+/**
+*		Is WebRTC capable ?
+*/
+function isWebRTCCapable() {
+	return /iP(hone|od)/.test(window.navigator.userAgent);
+}

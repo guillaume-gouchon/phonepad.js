@@ -37,6 +37,9 @@ io.sockets.on('connection', function (socket) {
       socket.pId = data.pId;
       socket.gameId = data.gameId;
       gameSocket.emit('pId', data.pId);
+      socket.emit('connected');
+    } else {
+      socket.emit('error');
     }
   });
 
