@@ -16,6 +16,8 @@
   "license": "MIT",
   "ignore": [
   	"src",
+    ".gitattributes",
+    ".editorconfig",
   	".gitignore",
   	".jshintrc",
   	"bower.json",
@@ -26,7 +28,6 @@
     "server"
   ],
   "dependencies": {
-    "jquery": ">=1.10.2",
     "peerjs": "~0.3.8"
   }
 }

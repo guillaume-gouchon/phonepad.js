@@ -1,3 +1,4 @@
+/*! phonepad.js build: 0.0.1. MIT Licensed. Copyright(c) 2014 Guillaume Gouchon <guillaume.gouchon@gmail.com> */
 'use strict';
 
 function GamepadHelper () {

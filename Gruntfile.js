@@ -12,14 +12,16 @@ module.exports = function (grunt) {
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
+  grunt.loadNpmTasks('grunt-header');
   grunt.loadNpmTasks('grunt-remove-logging');
-  grunt.loadNpmTasks('grunt-license');
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
   // Define the configuration for all the tasks
   grunt.initConfig({
+
+    version: grunt.file.readJSON('bower.json').version,
 
     // Project settings
     yeoman: {
@@ -97,14 +99,17 @@ module.exports = function (grunt) {
       }
     },
 
-    license: {
-      options: {
-        // Task-specific options go here.
-      },
-      your_target: {
-        // Target-specific file lists and/or options go here.
-      },
-    },
+    header: {
+      dist: {
+        options: {
+          text: '/*! phonepad.js build: <%= version %>. MIT Licensed. Copyright(c) 2014 Guillaume Gouchon <guillaume.gouchon@gmail.com> */'
+        },
+        files: {
+          '<%= yeoman.dist %>/phonepad.js': '<%= yeoman.dist %>/phonepad.js',
+          '<%= yeoman.dist %>/phonepad.min.js': '<%= yeoman.dist %>/phonepad.min.js'
+        }
+      }
+    }
 
   });
 
@@ -127,7 +132,8 @@ module.exports = function (grunt) {
     // 'jshint',
     'concat',
     'removelogging',
-    'uglify'
+    'uglify',
+    'header'
   ]);
 
   grunt.registerTask('default', [
