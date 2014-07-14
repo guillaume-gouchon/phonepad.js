@@ -19,8 +19,12 @@ $(function() {
 		}
 	});
 
-	phonepad.on('playerDisconnected', function () {
-		updatePlayersLayout();
+	phonepad.on('playerDisconnected', function (pId) {
+		var playerIndex = players.indexOf(pId);
+		if (playerIndex >= 0) {
+			players.splice(playerIndex, 1);
+			updatePlayersLayout();
+		}
 	});
 
 	phonepad.on('commandsReceived', function (commands) {

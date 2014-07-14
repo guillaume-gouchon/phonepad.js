@@ -26,9 +26,9 @@ function PhonepadCallbacks () {
 		}
 	};
 
-	this.onPlayerDisconnected = function () {
+	this.onPlayerDisconnected = function (playerId) {
 		if (callbacks.playerDisconnected != null) {
-			callbacks.playerDisconnected();
+			callbacks.playerDisconnected(playerId);
 		}
 	};
 

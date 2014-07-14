@@ -17,19 +17,25 @@ var games = {};
 // init socket.io
 io.sockets.on('connection', function (socket) {
 
-  // pick a unique game id
-  var gameId;
-  do {
-    gameId = randomWords.pick();
-  } while (games[gameId] != null);
+  // new game
+  socket.on('newGame', function (data) {
+    // pick a unique game id
+    var gameId;
+    do {
+      gameId = randomWords.pick();
+    } while (games[gameId] != null);
 
-  games[gameId] = socket;
-  socket.emit('gameId', gameId);
+    socket.gameId = gameId;
+    games[gameId] = socket;
+    socket.emit('gameId', gameId);
+  });
 
   // new player is connected
   socket.on('pId', function (data) {
     var gameSocket = games[data.gameId];
     if (gameSocket != null) {
+      socket.pId = data.pId;
+      socket.gameId = data.gameId;
       gameSocket.emit('pId', data.pId);
     }
   });
@@ -42,12 +48,17 @@ io.sockets.on('connection', function (socket) {
     }
   });
 
-  // a player or a game has been disconnected
+  // handles disconnections
   socket.on('disconnect', function () {
-    var disconnectedSocket = games[socket.id];
-    if (disconnectedSocket != null) {
-      console.log('destroying game...');
-      delete games[socket.id];
+    var gameSocket = games[socket.gameId];
+    if (gameSocket != null) {
+      if (socket.pId != null) {
+        // a player has been disconnected
+        gameSocket.emit('disconnect', socket.pId);
+      } else  {
+        // the game has been disconnected
+        delete games[socket.gameId];
+      }
     }
   });
 

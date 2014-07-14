@@ -9,6 +9,7 @@ function Network() {
 	var connectWS = function (callbacks) {
 		// connect websockets for non-webRTC clients
 		socket = io.connect(WS_SERVER_URL);
+		socket.emit('newGame');
 		socket.on('gameId', function (gameId) {
 			console.log('Received gameId', gameId);
 			connectWebRTC(gameId, callbacks);
@@ -24,6 +25,11 @@ function Network() {
 			console.log('Receiving commands from websockets...');
 			callbacks.onCommandsReceived(commands);
 		});
+
+		socket.on('disconnect', function (pId) {
+			console.log('A player has been disconnected', pId);
+			callbacks.onPlayerDisconnected(pId);
+		});
 	};
 
 	var connectWebRTC = function (gameId, callbacks) {
@@ -37,7 +43,9 @@ function Network() {
 					switch(data.type) {
 						case 'pId':
 							console.log('Receiving player id from webRTC...');
-							callbacks.onPlayerConnected(JSON.parse(data.content), Phonepad.PAD_TYPES.phonepad);
+							var playerId = JSON.parse(data.content);
+							conn.pId = playerId;
+							callbacks.onPlayerConnected(playerId, Phonepad.PAD_TYPES.phonepad);
 							break;
 						case 'comm':
 							console.log('Receiving commands from webRTC...');
@@ -49,7 +57,8 @@ function Network() {
 
 				// remove disconnected players
 				conn.on('close', function () {
-					console.log('A player has been disconnected');
+					console.log('A player has been disconnected', conn.pId);
+					callbacks.onPlayerDisconnected(conn.pId);
 				});
 			});
 		} catch (e) {
