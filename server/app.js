@@ -1,10 +1,11 @@
-var PORT = 7070;
+var WS_PORT = 7070;
+var WEB_RTC_PORT = 7071;
+
+var randomWords = require('./randomWords');
 
 var app = require('http').createServer(handler);
 var io = require('socket.io')(app);
-var randomWords = require('./randomWords');
-
-app.listen(PORT);
+app.listen(WS_PORT);
 
 function handler (req, res) {
   res.writeHead(200);
@@ -67,4 +68,9 @@ io.sockets.on('connection', function (socket) {
 
 });
 
-console.info("Server is running on port " + PORT + " !");
+console.info("Websockets Server is running on port " + WS_PORT + " !");
+
+var PeerServer = require('peer').PeerServer;
+var server = new PeerServer({port: WEB_RTC_PORT, path: '/phonepad'});
+
+console.info("WebRTC Server is running on port " + WEB_RTC_PORT + " !");
