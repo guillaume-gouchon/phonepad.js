@@ -1,5 +1,5 @@
 var WS_PORT = 7070;
-var WEB_RTC_PORT = 7071;
+var WEB_RTC_PORT = 6060;
 
 var randomWords = require('./randomWords');
 
