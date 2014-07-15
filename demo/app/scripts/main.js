@@ -62,16 +62,18 @@ function updateController(commands) {
 
 	$('div', controller).removeClass('active');
 
-	if (commands.axes[0] == 1) {
-		$('.axisS', controller).addClass('active');
-	} else if (commands.axes[0] == -1) {
-		$('.axisN', controller).addClass('active');
+	var axeThreshold = 0.3;
+
+	if (commands.axes[0] > axeThreshold) {
+		$('.axisE', controller).addClass('active');
+	} else if (commands.axes[0] < -axeThreshold) {
+		$('.axisW', controller).addClass('active');
 	}
 
-	if (commands.axes[1] == 1) {
-		$('.axisE', controller).addClass('active');
-	} else if (commands.axes[1] == -1) {
-		$('.axisW', controller).addClass('active');
+	if (commands.axes[1] > axeThreshold) {
+		$('.axisS', controller).addClass('active');
+	} else if (commands.axes[1] < -axeThreshold) {
+		$('.axisN', controller).addClass('active');
 	}
 
 	if (commands.buttons[0].pressed) {

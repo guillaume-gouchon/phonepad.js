@@ -89,6 +89,7 @@ function GamepadHelper () {
       for (var l in rawGamepads) {
         var rawGamepad = rawGamepads[l];
         if (rawGamepad != null && l >= 0) {
+          rawGamepad.pId = rawGamepad.id;
           gamepads.push(rawGamepad);
           callbacks.onCommandsReceived(rawGamepad);
         }
@@ -122,7 +123,7 @@ function GamepadHelper () {
 
   var removePlayer = function (gamepad) {
     gamepads.splice(gamepad.index, 1);
-    callbacks.onPlayerDisconnected(newGamepad.id);
+    callbacks.onPlayerDisconnected(gamepad.id);
   };
 
 }

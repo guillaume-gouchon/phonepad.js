@@ -18,8 +18,8 @@ Phonepad.js is a library which allows you to add Gamepads and Phonepads support 
 3. initialize the lib and implement the callbacks :  
 `var phonepad = Phonepad.getInstance();` // get instance of the Phonepad Singleton  
 `phonepad.on('connected', function (gameId) { //TODO });` // lib is connected, display the gameId so that phonepad players can connect to the game !  
-`phonepad.on('padNotSupported', function (padType) { //TODO });` // some types of pads can be not supported
-`phonepad.on('playerConnected', function (playerId, padType) { //TODO });` // a player is connected  
+`phonepad.on('padNotSupported', function (gamepadType) { //TODO });` // some types of pads can be not supported
+`phonepad.on('playerConnected', function (playerId, gamepadType) { //TODO });` // a player is connected  
 `phonepad.on('playerDisconnected', function (playerId) { //TODO });` // a player is disconnected  
 `phonepad.on('commandsReceived', function (commands) { //TODO });` // you just received some commands !  
 `phonepad.start();`  // GO !  

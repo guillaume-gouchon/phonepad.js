@@ -79,8 +79,8 @@ function GamepadButton () {
 *		Maps the different inputs to their indexes in the GamePad API object.
 */
 Controller.BUTTONS_MAP = {
-	axisVertical: 0,
-	axisHorizontal: 1,
+	axisHorizontal: 0,
+	axisVertical: 1,
 	A: 0,
 	B: 1,
 	X: 2,
