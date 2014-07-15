@@ -71,7 +71,7 @@ io.sockets.on('connection', function (socket) {
 console.info("Websockets Server is running on port " + WS_PORT + " !");
 
 var PeerServer = require('peer').PeerServer;
-var server = new PeerServer({port: WEB_RTC_PORT, path: '/phonepad'});
+var server = new PeerServer({port: WEB_RTC_PORT, path: ''});
 server.on('connection', function (id) { 
   console.log('Connected', id);
 });

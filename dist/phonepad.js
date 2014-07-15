@@ -136,8 +136,8 @@ function GamepadHelper () {
 function Network() {
 
   var WEBRTC_SERVER_HOST = 'warnode.com';
-  var WEBRTC_SERVER_PORT = 7071;
-  var WEBRTC_SERVER_PATH = '/phonepad';
+  var WEBRTC_SERVER_PORT = 6060;
+  var WEBRTC_SERVER_PATH = '';
   var WS_SERVER_URL = 'http://warnode.com:7070';
 
   var connectWS = function (callbacks) {
