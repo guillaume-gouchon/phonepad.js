@@ -3,7 +3,7 @@
 */
 function Network() {
 
-	var WEBRTC_SERVER_URL = 'http://warnode.com';
+	var WEBRTC_SERVER_HOST = 'warnode.com';
 	var WEBRTC_SERVER_PORT = 7071;
 	var WEBRTC_SERVER_PATH = '/phonepad';
 	var WS_SERVER_URL = 'http://warnode.com:7070';
@@ -31,7 +31,7 @@ function Network() {
 		  });
 		} else {
 			console.log('Connecting through webRTC...');
-			var peer = new Peer(null, {host: WEBRTC_SERVER_URL, port: WEBRTC_SERVER_PORT, path: WEBRTC_SERVER_PATH});
+			var peer = new Peer(null, {host: WEBRTC_SERVER_HOST, port: WEBRTC_SERVER_PORT, path: WEBRTC_SERVER_PATH});
 			webRTCConnector = peer.connect(gameId);
 			var _this = this;
 			webRTCConnector.on('open', function () {

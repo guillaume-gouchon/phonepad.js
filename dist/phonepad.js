@@ -4,7 +4,7 @@
 function GamepadHelper () {
 
   var pinging = false;
-  var prevRawGamepadTypes = [];
+  var prevGamepadTypes = [];
   var gamepads = [];
 
   var callbacks = null;
@@ -58,41 +58,42 @@ function GamepadHelper () {
       (navigator.webkitGetGamepads && navigator.webkitGetGamepads());
 
     if (rawGamepads) {
-      // remove the gamepads which left
+      // remove disconnected gamepads
       loopPrevPads:
-      for (var i in prevRawGamepadTypes) {
-        var prevRawGamepadType = prevRawGamepadTypes[i];
+      for (var i in prevGamepadTypes) {
+        var prevGamepadType = prevGamepadTypes[i];
         for (var j in rawGamepads) {
-          if (prevRawGamepadType === rawGamepads[j].id) {
+          if (prevGamepadType === rawGamepads[j].id) {
             continue loopPrevPads;
           }
         }
-        delete prevRawGamepadTypes[i];
+        prevGamepadTypes.splice(i, 1);
         removePlayer(gamepads[i]);
       }
 
+      // add new gamepads
+      loopGamepads:
+      for (var i in rawGamepads) {
+        var rawGamepad = rawGamepads[i];
+        if (rawGamepad != null && i >= 0) {
+          for (var j in prevGamepadTypes) {
+            if (rawGamepad.id === prevGamepadTypes[j]) {
+              continue loopGamepads;
+            }
+          }
+          prevGamepadTypes.push(rawGamepad.id);
+          addPlayer(rawGamepad);
+        }
+      }
+
       gamepads = [];
-      var gamepadsChanged = false;
-
-      for (var k = 0; k < rawGamepads.length; k++) {
-        if (rawGamepads[k] != null && rawGamepads[k].id != prevRawGamepadTypes[k]) {
-          gamepadsChanged = true;
-          prevRawGamepadTypes[k] = rawGamepads[k].id;
-        }
-
-        if (rawGamepads[k]) {
-          gamepads.push(rawGamepads[k]);
+      for (var l in rawGamepads) {
+        var rawGamepad = rawGamepads[l];
+        if (rawGamepad != null && l >= 0) {
+          gamepads.push(rawGamepad);
+          callbacks.onCommandsReceived(rawGamepad);
         }
       }
-
-      if (gamepadsChanged) {
-        // add new gamepads
-        for (var l in gamepads) {
-          callbacks.onCommandsReceived(gamepads[l]);
-        }
-      }
-
-      
     }
   };
 
@@ -122,6 +123,7 @@ function GamepadHelper () {
 
   var removePlayer = function (gamepad) {
     gamepads.splice(gamepad.index, 1);
+    callbacks.onPlayerDisconnected(newGamepad.id);
   };
 
 }
@@ -133,7 +135,9 @@ function GamepadHelper () {
 */
 function Network() {
 
-  var PEER_API_KEY = '609xv5np9cu15rk9';
+  var WEBRTC_SERVER_HOST = 'warnode.com';
+  var WEBRTC_SERVER_PORT = 7071;
+  var WEBRTC_SERVER_PATH = '/phonepad';
   var WS_SERVER_URL = 'http://warnode.com:7070';
 
   var connectWS = function (callbacks) {
@@ -166,7 +170,7 @@ function Network() {
   var connectWebRTC = function (gameId, callbacks) {
     // initalize webRTC connection
     try {
-      var peer = new Peer(gameId, { key: PEER_API_KEY });
+      var peer = new Peer(gameId, {host: WEBRTC_SERVER_HOST, port: WEBRTC_SERVER_PORT, path: WEBRTC_SERVER_PATH});
       peer.on('connection', function (conn) {
 
         // register message receiver

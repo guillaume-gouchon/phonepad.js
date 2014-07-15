@@ -72,5 +72,11 @@ console.info("Websockets Server is running on port " + WS_PORT + " !");
 
 var PeerServer = require('peer').PeerServer;
 var server = new PeerServer({port: WEB_RTC_PORT, path: '/phonepad'});
+server.on('connection', function (id) { 
+  console.log('Connected', id);
+});
+server.on('disconnect', function (id) {
+  console.log('Disconnected', id);
+});
 
 console.info("WebRTC Server is running on port " + WEB_RTC_PORT + " !");

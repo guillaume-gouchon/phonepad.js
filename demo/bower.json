@@ -5,6 +5,6 @@
     "jquery": "~1.10.2",
     "peerjs": "~0.3.8",
     "modernizr": "~2.8.3",
-    "phonepad.js": "0.0.3"
+    "phonepad.js": "0.0.4"
   }
 }
