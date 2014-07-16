@@ -16,6 +16,7 @@ function Network() {
     // connect websockets for non-webRTC clients
     var socket = io.connect(WS_SERVER_URL);
     socket.emit('newGame');
+
     socket.on('gameId', function (gameId) {
       console.log('Received gameId', gameId);
       connectWebRTC(gameId, callbacks);
@@ -70,6 +71,12 @@ function Network() {
           // takes too much time to be fired...
           // callbacks.onPlayerDisconnected(conn.pId);
         });
+      });
+
+      // automatic reconnection to the server
+      webRTCPeer.on('disconnected', function () {
+        console.log('Reconnecting to WebRTC server...');
+        webRTCPeer.reconnect();
       });
     } catch (e) {
       console.error(e);
