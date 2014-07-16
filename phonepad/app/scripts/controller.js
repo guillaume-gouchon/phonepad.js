@@ -34,7 +34,9 @@ function Controller(playerId) {
 	};
 
 	this.releaseAllAxes = function () {
+		var needsUpdate = axes[0] != 0.0 || axes[1] != 0.0;
 		axes = [0.0, 0.0];
+		return needsUpdate;
 	}
 
 	this.releaseAllButtons = function () {

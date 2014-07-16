@@ -175,8 +175,7 @@ var Phonepad = (function () {
 					} else if (ratioX > 0.264 && ratioY >= 0.67) {
 						updateAxisState('axisSE');
 					} else if (ratioX >= 0.132 && ratioX <= 0.264 && ratioY > 0.33 && ratioY < 0.67) {
-						$('.axis div').removeClass('active');
-						controller.releaseAllAxes();
+						updateAxisState('axisC');
 					} 
 				}
 			}
@@ -278,6 +277,9 @@ var Phonepad = (function () {
 				case 'axisE':
 					press($('.axisE'));
 					needsUpdate = controller.updateAxisState(Controller.BUTTONS_MAP.axisVertical, 0.0) || controller.updateAxisState(Controller.BUTTONS_MAP.axisHorizontal, 1.0);
+					break;
+				case 'axisC':
+					needsUpdate = controller.releaseAllAxes();
 					break;
 			}
 
