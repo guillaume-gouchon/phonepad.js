@@ -5,7 +5,9 @@
 */
 function Network() {
 
-  var PEER_API_KEY = '609xv5np9cu15rk9';
+  var WEBRTC_SERVER_HOST = 'warnode.com';
+  var WEBRTC_SERVER_PORT = 81;
+  var WEBRTC_SERVER_PATH = '';
   var WS_SERVER_URL = 'http://warnode.com:7070';
 
   var connectWS = function (callbacks) {
@@ -38,7 +40,7 @@ function Network() {
   var connectWebRTC = function (gameId, callbacks) {
     // initalize webRTC connection
     try {
-      var peer = new Peer(gameId, { key: PEER_API_KEY });
+      var peer = new Peer(gameId, {host: WEBRTC_SERVER_HOST, port: WEBRTC_SERVER_PORT, path: WEBRTC_SERVER_PATH});
       peer.on('connection', function (conn) {
 
         // register message receiver

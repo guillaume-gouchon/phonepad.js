@@ -6,4 +6,4 @@ git pull;
 
 # Restart server
 sudo forever stop phonepad;
-sudo forever --uid "phonepad" -a -l node.log -o node.log -e node.log start app.js;
+sudo forever --uid "phonepad" -a -l phonepad.log -o phonepad.log -e phonepad.log start app.js;

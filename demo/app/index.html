@@ -22,6 +22,7 @@
 
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/phone.css">
   <link rel="stylesheet" href="../../phonepad/.tmp/styles/phonepad.css">
   <!-- endbuild -->
 </head>
@@ -40,13 +41,13 @@
 
   <div id="instructions">
     <div class="col2">
-      <h3>Play with Gamepads</h3>
+      <h3>Play with gamepads</h3>
       <p>Just plug in/out some USB Gamepads or connect bluetooth ones !<br/><br/>Gamepads support is using HTML5 GamePads API.</p>
     </div>
 
     <div class="col2">
-      <h3>Play with Phonepads</h3>
-      <p>To use your phone as a Phonepad, go on <a href="http://pad.gouchon.com" target="_black">http://pad.gouchon.com</a> with your phone, and join the game using the <strong>gameId</strong> displayed.<br/><br/>Phonepads are connecting to the game using <strong>WebRTC</strong> if available (it uses <a href="http://peerjs.com" target="_blank">peer.js library</a>), or <strong>websockets</strong> if not.</p>
+      <h3>Play with your phone</h3>
+      <p>To use your phone as a Phonepad, go on <a href="http://pad.gouchon.com" target="_black">http://pad.gouchon.com</a> with your phone, and join the game using the <strong>gameId</strong> displayed.<br/><br/>Phonepads are connecting to the game using <strong>WebRTC</strong> if available, or <strong>websockets</strong> if not.</p>
     </div>
   </div>
 
@@ -220,21 +221,21 @@
   <div id="setup">
     <h3>Setup</h3>
 
-    <p>Phonepad.js is a library which allows you to add Gamepads and Phonepads suppport on your HTML5 game in the most easiest way ever :</p>
+    <p>Phonepad.js is a library which allows you to add Gamepads and Phonepads support on your HTML5 game in the most easiest way ever :</p>
 
     <ol>
       <li>install the lib via bower :<br/><br/><pre>bower install --save phonepad.js</pre><br/></li>
-      <li>add this to the end of your index.html :<br/><br/>
+      <li>add the scripts at the end of your index.html :<br/><br/>
         <pre>&lt;script src="bower_components/peerjs/peer.js"&gt;&lt;/script&gt; // used for WebRTC connections</pre>
-        <pre>&lt;script src="bower_components/phonepad.js/dist/phonepad.min.js"&gt;&lt;/script&gt; // the library !</pre>
         <pre>&lt;script src="http://warnode.com:7070/socket.io/socket.io.js"&gt;&lt;/script&gt; // used for websockets connections</pre>
+        <pre>&lt;script src="bower_components/phonepad.js/dist/phonepad.min.js"&gt;&lt;/script&gt; // the library !</pre>
         <br/>
       </li>
-      <li>initialize the lib and add some listeners :<br/><br/>
+      <li>initialize the lib and implement the callbacks :<br/><br/>
         <pre>var phonepad = Phonepad.getInstance();</pre>
         <pre>phonepad.on('connected', function (gameId) { //TODO }); // display the gameId</pre>
-        <pre>phonepad.on('padNotSupported', function (padType) { //TODO });</pre>
-        <pre>phonepad.on('playerConnected', function (playerId, padType) { //TODO }); // a player is connected</pre>
+        <pre>phonepad.on('padNotSupported', function (gamepadType) { //TODO });</pre>
+        <pre>phonepad.on('playerConnected', function (playerId, gamepadType) { //TODO }); // a player is connected</pre>
         <pre>phonepad.on('playerDisconnected', function (playerId) { //TODO }); // a player is disconnected</pre>
         <pre>phonepad.on('commandsReceived', function (commands) { //TODO }); // you just received some commands !</pre>
         <pre>phonepad.start(); // GO !</pre>

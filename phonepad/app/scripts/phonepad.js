@@ -141,7 +141,7 @@ var Phonepad = (function () {
 
 			for (var i in event.originalEvent.touches) {
 				var touch = event.originalEvent.touches[i];
-				if (!touch.clientX) return;
+				if (!touch.clientX) continue;
 
 				var ratioX = touch.pageX / screenWidth;
 				var ratioY = touch.pageY / screenHeight;
@@ -184,12 +184,15 @@ var Phonepad = (function () {
 
 			for (var i in event.originalEvent.changedTouches) {
 				var touch = event.originalEvent.changedTouches[i];
+
+				if (!touch.clientX) continue;
+
 				var ratioX = touch.pageX / screenWidth;
 				var ratioY = touch.pageY / screenHeight;
 				if (ratioX > 0.5) {
 					// $('.buttons div').removeClass('active');
 					controller.releaseAllButtons();
-				} else {
+				} else if (ratioX < 0.5) {
 					// $('.axis div').removeClass('active');
 					controller.releaseAllAxes();
 				}

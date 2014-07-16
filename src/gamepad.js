@@ -74,18 +74,25 @@ function GamepadHelper () {
       loopGamepads:
       for (var i in rawGamepads) {
         var rawGamepad = rawGamepads[i];
-        for (var j in prevGamepadTypes) {
-          if (rawGamepad.id === prevGamepadTypes[j]) {
-            continue loopGamepads;
+        if (rawGamepad != null && i >= 0) {
+          for (var j in prevGamepadTypes) {
+            if (rawGamepad.id === prevGamepadTypes[j]) {
+              continue loopGamepads;
+            }
           }
+          prevGamepadTypes.push(rawGamepad.id);
+          addPlayer(rawGamepad);
         }
-        prevGamepadTypes.push(rawGamepad.id);
-        addPlayer(rawGamepad);
       }
 
-      gamepads = rawGamepads;
-      for (var l in gamepads) {
-        callbacks.onCommandsReceived(gamepads[l]);
+      gamepads = [];
+      for (var l in rawGamepads) {
+        var rawGamepad = rawGamepads[l];
+        if (rawGamepad != null && l >= 0) {
+          rawGamepad.pId = rawGamepad.id;
+          gamepads.push(rawGamepad);
+          callbacks.onCommandsReceived(rawGamepad);
+        }
       }
     }
   };
@@ -116,7 +123,7 @@ function GamepadHelper () {
 
   var removePlayer = function (gamepad) {
     gamepads.splice(gamepad.index, 1);
-    callbacks.onPlayerDisconnected(newGamepad.id);
+    callbacks.onPlayerDisconnected(gamepad.id);
   };
 
 }
