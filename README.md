@@ -3,6 +3,8 @@
 ## Demo
 
 Test it here : ***[Awesome Demo](http://phonepad.gouchon.com)***
+Games which use it : ***[Mychrome Machines](http://machines.gouchon.com)***  
+
 
 ## Setup
 
