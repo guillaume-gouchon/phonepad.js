@@ -86,11 +86,11 @@ var Phonepad = (function () {
     }
 
 		function press(button) {
-			// button.addClass('active');
+			button.addClass('active');
 		};
 
 		function release(button) {
-			// button.removeClass('active');
+			button.removeClass('active');
 		};
 
     function connectToGame(chosenGameId) {
@@ -124,7 +124,7 @@ var Phonepad = (function () {
 		}
 
 		function bindPadEvents() {
-			var phonePadZone = $('#phonepad');
+			var phonePadZone = $('.phonepad');
 
 			// press events
 			phonePadZone.bind("touchstart", dispatchEvent);
@@ -174,6 +174,9 @@ var Phonepad = (function () {
 						updateAxisState('axisSW');
 					} else if (ratioX > 0.264 && ratioY >= 0.67) {
 						updateAxisState('axisSE');
+					} else if (ratioX >= 0.132 && ratioX <= 0.264 && ratioY > 0.33 && ratioY < 0.67) {
+						$('.axis div').removeClass('active');
+						controller.releaseAllAxes();
 					} 
 				}
 			}
@@ -190,10 +193,10 @@ var Phonepad = (function () {
 				var ratioX = touch.pageX / screenWidth;
 				var ratioY = touch.pageY / screenHeight;
 				if (ratioX > 0.5) {
-					// $('.buttons div').removeClass('active');
+					$('.buttons div').removeClass('active');
 					controller.releaseAllButtons();
 				} else if (ratioX < 0.5) {
-					// $('.axis div').removeClass('active');
+					$('.axis div').removeClass('active');
 					controller.releaseAllAxes();
 				}
 			}
@@ -204,7 +207,7 @@ var Phonepad = (function () {
 
 		function updateButtonState(buttonId) {
 			// update UI
-			// $('.buttons div').removeClass('active');
+			$('.buttons div').removeClass('active');
 			press($('.' + buttonId));
 			
 			// pick selected button
@@ -235,7 +238,7 @@ var Phonepad = (function () {
 
 		function updateAxisState(buttonId) {
 			// update UI
-			// $('.axis div').removeClass('active');
+			$('.axis div').removeClass('active');
 
 			var needsUpdate = false;
 

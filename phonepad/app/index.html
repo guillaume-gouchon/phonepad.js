@@ -3,92 +3,90 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" manifest="phonepad.appcache"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Phonepad - Use your phone as a gamepad for HTML5 games</title>
-        <meta name="description" content="Use your phone as a gamepad to play HTML5 Games !">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-        
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
+<head>
 
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-        <link rel="shortcut icon" sizes="196x196" href="apple-touch-icon.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57.png" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Phonepad - Use your phone as a gamepad for HTML5 games</title>
+  <meta name="description" content="Use your phone as a gamepad to play HTML5 Games !">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-        <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="styles/phonepad.css">
-        <!-- endbuild -->
-    </head>
-    <body>
-        <!--[if lt IE 10]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
-        <div id="phonepad">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="shortcut icon" sizes="196x196" href="apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57.png" />
 
-            <div class="axis">
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/phonepad.css">
+  <!-- endbuild -->
 
-                <div class="axisNW"></div>
-                <div class="axisN"></div>
-                <div class="axisNE"></div>
-                <div class="axisW"></div>
-                <div class="axisC"></div>
-                <div class="axisE"></div>
-                <div class="axisSW"></div>
-                <div class="axisS"></div>
-                <div class="axisSE"></div>
+</head>
 
-            </div>
+<body>
+  <!--[if lt IE 10]>
+  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
 
-            <div class="buttons">
+  <div class="phonepad">
+    <div class="axis">
+      <div class="axisNW"></div>
+      <div class="axisN"></div>
+      <div class="axisNE"></div>
+      <div class="axisW"></div>
+      <div class="axisC"></div>
+      <div class="axisE"></div>
+      <div class="axisSW"></div>
+      <div class="axisS"></div>
+      <div class="axisSE"></div>
+    </div>
 
-                <div class="btnY"></div>
-                <div class="btnX"></div>
-                <div class="btnB"></div>
-                <div class="btnA"></div>
+    <div class="buttons">
+      <div class="btnY"><span></span></div>
+      <div class="btnX"><span></span></div>
+      <div class="btnB"><span></span></div>
+      <div class="btnA"><span></span></div>
+    </div>
+  </div>
 
-            </div>
+  <div id="joinGame">
+    <div>
+      <input id="gameIdInput" class="bounce" type="text" placeholder="game id..." tabindex="1" />
+      <button id="joinGameBtn">Join game !</button>
+    </div>
+    <div>
+      <button id="rejoinBtn" class="hide">Reconnect ?</button>
+    </div>
+  </div>
 
-            <div id="joinGame">
-                <div>
-                    <input id="gameIdInput" class="bounce" type="text" placeholder="game id..." tabindex="1" />
-                    <button id="joinGameBtn">Join game !</button>
-                </div>
-                <div>
-                    <button id="rejoinBtn" class="hide">Reconnect ?</button>
-                </div>
-            </div>
+  <div id="loading" class="hide">
+    <div class="container">
+      <div class="ring"></div>
+      <div class="ring"></div>
+    </div>
+  </div>
 
-            <div id="loading" class="hide">
-                <div class="container">
-                    <div class="ring"></div>
-                    <div class="ring"></div>
-                </div>
-            </div>
-            
-        </div>
 
-        <!-- build:js scripts/vendor.js -->
-        <!-- bower:js -->
-        <script src="bower_components/modernizr/modernizr.js"></script>
-        <script src="bower_components/jquery/jquery.js"></script>
-        <script src="bower_components/peerjs/peer.js"></script>
-        <!-- endbower -->
-        <!-- endbuild -->
+  <!-- build:js scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/modernizr/modernizr.js"></script>
+  <script src="bower_components/jquery/jquery.js"></script>
+  <script src="bower_components/peerjs/peer.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
 
-        <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="scripts/utils.js"></script>
-        <script src="scripts/network.js"></script>
-        <script src="scripts/controller.js"></script>
-        <script src="scripts/phonepad.js"></script>
-        <script src="scripts/main.js"></script>
-        <!-- endbuild -->
-        
+  <!-- build:js({app,.tmp}) scripts/main.js -->
+  <script src="scripts/utils.js"></script>
+  <script src="scripts/network.js"></script>
+  <script src="scripts/controller.js"></script>
+  <script src="scripts/phonepad.js"></script>
+  <script src="scripts/main.js"></script>
+  <!-- endbuild -->
+
 </body>
 </html>

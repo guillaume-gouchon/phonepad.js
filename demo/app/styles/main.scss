@@ -118,15 +118,17 @@ p, ol {
 	}
 
 	.phonepad {
+		position: relative;
 		display: inline-block;
-		height: 160px;
-		width: 260px;
+		height: 140px;
+		width: 290px;
 		background: #111;
 		text-align: left;
 		opacity: 0.4;
 		@extend .easeTransition;
 		border-radius: 20px;
 		margin: 15px;
+		padding: 5px 8px;
 
 		&.active {
 			opacity: 1.0;

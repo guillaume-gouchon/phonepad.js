@@ -1,16 +1,18 @@
 @import "compass";
 
 $bounceDuration: 500ms;
-$btnOpacity: 0.6;
+$btnOpacity: 0.5;
 $axisBackground: #000;
-$axisBorderRadius: 35%;
+$axisBackgroundActive: #888;
+$bgBorderRadius: 15px;
+$bgAxisButton: #555;
+$bgButton: #444;
 
-#phonepad {
+.phonepad {
 	position: fixed;
 	height: 100%;
 	width: 100%;
-	background: #111;
-	border-radius: 60px;
+	background: #333;
 }
 
 .axis, .buttons {
@@ -24,9 +26,6 @@ $axisBorderRadius: 35%;
 }
 
 .axis {
-	border-radius: 50%;
-	background: rgba(255, 255, 255, 0.5);
-	box-shadow: inset 0px 0px 14px 6px rgba(50, 50, 50, 0.75);
 
 	div {
 		display: inline-block;
@@ -36,43 +35,44 @@ $axisBorderRadius: 35%;
 		opacity: $btnOpacity;
 
 		&.active {
-			opacity: 1.0;
+			background: $axisBackgroundActive;
 		}
 	}
 
 	.axisN {
+		background: $axisBackground;
 		width: 34%;
-		background: radial-gradient(ellipse at center, #333 10%, #000 100%);
-		border-radius: $axisBorderRadius $axisBorderRadius 0px 0px;
-		box-shadow: inset 0px 0px 14px 6px rgba(50, 50, 50, 0.75);
+		box-shadow: inset 0px 2px 10px 6px $bgAxisButton;
+		border-radius: $bgBorderRadius $bgBorderRadius 0px 0px;
 	}
 
 	.axisS {
+		background: $axisBackground;
 		width: 34%;
-		background: radial-gradient(ellipse at center, #333 10%, #000 100%);
-		border-radius: 0px 0px $axisBorderRadius $axisBorderRadius;
-		box-shadow: inset 0px 0px 14px 6px rgba(50, 50, 50, 0.75);
+		box-shadow: inset 0px -2px 10px 6px $bgAxisButton;
+		border-radius: 0px 0px $bgBorderRadius $bgBorderRadius;
 	}
 
 	.axisE {
+		background: $axisBackground;
 		height: 34%;
-		background: radial-gradient(ellipse at center, #333 10%, #000 100%);
-		border-radius: 0px $axisBorderRadius $axisBorderRadius 0px;
-		box-shadow: inset 0px 0px 14px 6px rgba(50, 50, 50, 0.75);
+		box-shadow: inset -2px 0px 10px 6px $bgAxisButton;
+		border-radius: 0px $bgBorderRadius $bgBorderRadius 0px;
 	}
 
 	.axisW {
+		background: $axisBackground;
 		height: 34%;
-		background: radial-gradient(ellipse at center, #333 10%, #000 100%);
-		border-radius: $axisBorderRadius 0px 0px $axisBorderRadius;
-		box-shadow: inset 0px 0px 14px 6px rgba(50, 50, 50, 0.75);
+		box-shadow: inset 2px 0px 10px 6px $bgAxisButton;
+		border-radius: $bgBorderRadius 0px 0px $bgBorderRadius;
 	}
 
 	.axisC {
+		background: $axisBackground;
+		height: 34%;
+		box-shadow: inset 0px 0px 10px 6px $bgAxisButton;
 		height: 34%;
 		width: 34%;
-		background: radial-gradient(ellipse at center, #333 10%, #000 100%);
-		box-shadow: inset 0px 0px 7px 3px rgba(50, 50, 50, 0.75);
 	}
 }
 
@@ -83,36 +83,55 @@ $axisBorderRadius: 35%;
 		display: inline-block;
 		height: 33%;
 		width: 33%;
-		opacity: $btnOpacity;
-		border-radius: 100%;
-		font-size: 3rem;
-		color: #fff;
-		text-shadow: 2px 2px 2px #000;
-		text-align: center;
-		box-shadow: inset 0px 0px 12px 6px rgba(220, 220, 220, 0.75);
 		user-select: none;
+		background: $bgButton;
+		border-radius: $bgBorderRadius;
 
-		&.active {
+		span {
+			display: block;
+			opacity: $btnOpacity;
+			border-radius: 100%;
+			position: relative;
+			top: 5%;
+			left: 5%;
+			height: 90%;
+			width: 90%;
+			box-shadow: inset 0px 0px 20px 10px #000;
+		}
+
+		&.active > span {
 			opacity: 1.0;
 		}
 	}
 
 	.btnY {
 		margin: 0px 33%;
-		background: radial-gradient(ellipse at center, yellow 10%, #000 100%);
+
+		span {
+			background: yellow;
+		}
 	}
 
 	.btnX {
-		background: radial-gradient(ellipse at center, blue 10%, #000 100%);
+
+		span {
+			background: blue;
+		}
 	}
 
 	.btnB {
 		margin-left: 34%;
-		background: radial-gradient(ellipse at center, red 10%, #000 100%);
+
+		span {
+			background: red;
+		}
 	}
 
 	.btnA {
 		margin-left: 33%;
-		background: radial-gradient(ellipse at center, green 10%, #000 100%);
+
+		span {
+			background: green;
+		}
 	}
 }

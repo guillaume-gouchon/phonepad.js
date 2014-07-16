@@ -2,9 +2,8 @@
 
 ## Demo
 
-Test it here : ***[Awesome Demo](http://phonepad.gouchon.com)***
-Games which use it : ***[Mychrome Machines](http://machines.gouchon.com)***  
-
+Test it here : ***[Awesome Demo](http://phonepad.gouchon.com)***  
+Games which are using it : ***[Mychrome Machines](http://machines.gouchon.com)***  
 
 ## Setup
 
@@ -24,7 +23,7 @@ Phonepad.js is a library which allows you to add Gamepads and Phonepads support 
 `phonepad.on('playerConnected', function (playerId, gamepadType) { //TODO });` // a player is connected  
 `phonepad.on('playerDisconnected', function (playerId) { //TODO });` // a player is disconnected  
 `phonepad.on('commandsReceived', function (commands) { //TODO });` // you just received some commands !  
-`phonepad.start();`  // GO !  
+`phonepad.start();` // GO !  
 ***(Done !)***
 
 ***
