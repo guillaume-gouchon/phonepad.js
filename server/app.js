@@ -29,6 +29,7 @@ io.sockets.on('connection', function (socket) {
     socket.gameId = gameId;
     games[gameId] = socket;
     socket.emit('gameId', gameId);
+    console.log(games.length, 'games running at the moment');
   });
 
   // new player is connected
