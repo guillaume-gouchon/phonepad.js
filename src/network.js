@@ -10,6 +10,8 @@ function Network() {
   var WEBRTC_SERVER_PATH = '';
   var WS_SERVER_URL = 'http://warnode.com:7070';
 
+  var webRTCPeer = null, webRTCConnection = null;
+
   var connectWS = function (callbacks) {
     // connect websockets for non-webRTC clients
     var socket = io.connect(WS_SERVER_URL);
@@ -40,16 +42,18 @@ function Network() {
   var connectWebRTC = function (gameId, callbacks) {
     // initalize webRTC connection
     try {
-      var peer = new Peer(gameId, {host: WEBRTC_SERVER_HOST, port: WEBRTC_SERVER_PORT, path: WEBRTC_SERVER_PATH});
-      peer.on('connection', function (conn) {
+      webRTCPeer = new Peer(gameId, {host: WEBRTC_SERVER_HOST, port: WEBRTC_SERVER_PORT, path: WEBRTC_SERVER_PATH});
+      webRTCPeer.on('connection', function (conn) {
+
+        webRTCConnection = conn;
 
         // register message receiver
-        conn.on('data', function (data) {
+        webRTCConnection.on('data', function (data) {
           switch(data.type) {
             case 'pId':
               console.log('Receiving player id from webRTC...');
               var playerId = JSON.parse(data.content);
-              conn.pId = playerId;
+              webRTCConnection.pId = playerId;
               callbacks.onPlayerConnected(playerId, Phonepad.PAD_TYPES.phonepad);
               break;
             case 'comm':
@@ -61,8 +65,8 @@ function Network() {
         });
 
         // remove disconnected players
-        conn.on('close', function () {
-          console.log('A player has been disconnected', conn.pId);
+        webRTCConnection.on('close', function () {
+          console.log('A player has been disconnected', webRTCConnection.pId);
           // takes too much time to be fired...
           // callbacks.onPlayerDisconnected(conn.pId);
         });

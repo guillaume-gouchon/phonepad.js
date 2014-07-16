@@ -1,4 +1,4 @@
-/*! phonepad.js build: 0.0.6. MIT Licensed. Copyright(c) 2014 Guillaume Gouchon <guillaume.gouchon@gmail.com> */
+/*! phonepad.js build: 0.0.7. MIT Licensed. Copyright(c) 2014 Guillaume Gouchon <guillaume.gouchon@gmail.com> */
 'use strict';
 
 function GamepadHelper () {
@@ -141,6 +141,8 @@ function Network() {
   var WEBRTC_SERVER_PATH = '';
   var WS_SERVER_URL = 'http://warnode.com:7070';
 
+  var webRTCPeer = null, webRTCConnection = null;
+
   var connectWS = function (callbacks) {
     // connect websockets for non-webRTC clients
     var socket = io.connect(WS_SERVER_URL);
@@ -171,16 +173,18 @@ function Network() {
   var connectWebRTC = function (gameId, callbacks) {
     // initalize webRTC connection
     try {
-      var peer = new Peer(gameId, {host: WEBRTC_SERVER_HOST, port: WEBRTC_SERVER_PORT, path: WEBRTC_SERVER_PATH});
-      peer.on('connection', function (conn) {
+      webRTCPeer = new Peer(gameId, {host: WEBRTC_SERVER_HOST, port: WEBRTC_SERVER_PORT, path: WEBRTC_SERVER_PATH});
+      webRTCPeer.on('connection', function (conn) {
+
+        webRTCConnection = conn;
 
         // register message receiver
-        conn.on('data', function (data) {
+        webRTCConnection.on('data', function (data) {
           switch(data.type) {
             case 'pId':
               
               var playerId = JSON.parse(data.content);
-              conn.pId = playerId;
+              webRTCConnection.pId = playerId;
               callbacks.onPlayerConnected(playerId, Phonepad.PAD_TYPES.phonepad);
               break;
             case 'comm':
@@ -192,7 +196,7 @@ function Network() {
         });
 
         // remove disconnected players
-        conn.on('close', function () {
+        webRTCConnection.on('close', function () {
           
           // takes too much time to be fired...
           // callbacks.onPlayerDisconnected(conn.pId);
