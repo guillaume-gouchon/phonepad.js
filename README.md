@@ -35,7 +35,7 @@ Gamepads support is using HTML5 GamePads API. Just plug in/out some USB Gamepads
 
 ### Play with your phone
 To use your phone as a Phonepad, go on ***[http://pad.gouchon.com](http://pad.gouchon.com)*** with your phone, and then join the game using the ***gameId*** displayed on the HTML5 game.  
-Phonepads are connecting to the game using ***WebRTC*** if available, or ***websockets*** if not.
+Phonepads are being connected to the game using ***WebRTC*** if available, or ***websockets***.
 
 ## More
 
