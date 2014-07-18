@@ -76,7 +76,7 @@ function Network() {
       // automatic reconnection to the server
       webRTCPeer.on('disconnected', function () {
         console.log('Reconnecting to WebRTC server...');
-        webRTCPeer.reconnect();
+        connectWebRTC(gameId, callbacks);
       });
     } catch (e) {
       console.error(e);

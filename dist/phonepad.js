@@ -1,4 +1,4 @@
-/*! phonepad.js build: 0.0.8. MIT Licensed. Copyright(c) 2014 Guillaume Gouchon <guillaume.gouchon@gmail.com> */
+/*! phonepad.js build: 0.0.9. MIT Licensed. Copyright(c) 2014 Guillaume Gouchon <guillaume.gouchon@gmail.com> */
 'use strict';
 
 function GamepadHelper () {
@@ -207,7 +207,7 @@ function Network() {
       // automatic reconnection to the server
       webRTCPeer.on('disconnected', function () {
         
-        webRTCPeer.reconnect();
+        connectWebRTC(gameId, callbacks);
       });
     } catch (e) {
       

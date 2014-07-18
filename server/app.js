@@ -74,10 +74,10 @@ console.info("Websockets Server is running on port " + WS_PORT + " !");
 var PeerServer = require('peer').PeerServer;
 var server = new PeerServer({port: WEB_RTC_PORT, path: ''});
 server.on('connection', function (id) { 
-  console.log('Connected', id);
+  console.log('Connected with webRTC', id);
 });
 server.on('disconnect', function (id) {
-  console.log('Disconnected', id);
+  console.log('Disconnected with webRTC', id);
 });
 
 console.info("WebRTC Server is running on port " + WEB_RTC_PORT + " !");
