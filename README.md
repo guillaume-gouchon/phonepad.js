@@ -7,7 +7,7 @@ Games which are using it : ***[Mychrome Machines](http://machines.gouchon.com)**
 
 ## Setup
 
-Phonepad.js is a library which allows you to add Gamepads and Phonepads support on your HTML5 game in the most easiest way ever :
+Phonepad.js is a library which allows you to add Gamepads and Phonepads support to your HTML5 game in the easiest way ever :
 
 
 1. install the lib via bower : `bower install --save phonepad.js`
