@@ -15,6 +15,7 @@ var Phonepad = (function () {
 		var COOKIE_PLAYER_ID = 'phonepad_player_id';
 		var COOKIE_GAME_ID = 'phonepad_game_id';
 		var COOKIE_EXPIRATION = 30;// in minutes
+		var VIBRATION_DURATION = 17;// in ms
 
 		var gameId = getCookie(COOKIE_GAME_ID);
 		var playerId = getCookie(COOKIE_PLAYER_ID);
@@ -29,6 +30,9 @@ var Phonepad = (function () {
 
 		var screenWidth = $(window).width();
 		var screenHeight = $(window).height();
+
+		// enable vibration support
+		navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
 
 		window.onresize = function () {
 			screenWidth = $(window).width();
@@ -85,8 +89,17 @@ var Phonepad = (function () {
     	return $('#gameIdInput').val().toLowerCase();
     }
 
-		function press(button) {
+    function vibrate(duration) {
+    	if (navigator.vibrate) {
+				window.navigator.vibrate(duration);
+			}
+    }
+
+		function press(button, makeVibrate) {
 			button.addClass('active');
+			if (makeVibrate) {
+				vibrate(VIBRATION_DURATION);
+			}
 		};
 
 		function release(button) {
@@ -143,39 +156,42 @@ var Phonepad = (function () {
 				var touch = event.originalEvent.touches[i];
 				if (!touch.clientX) continue;
 
+				console.log(event)
+				var isTouchStart = event.type == 'touchstart';
+
 				var ratioX = touch.pageX / screenWidth;
 				var ratioY = touch.pageY / screenHeight;
 				if (ratioX >= 0.6) {
 					// buttons
 					if (ratioX >= 0.732 && ratioX <= 0.864 && ratioY <= 0.33) {
-						updateButtonState('btnY');
+						updateButtonState('btnY', isTouchStart);
 					} else if (ratioX >= 0.732 && ratioX <= 0.864 && ratioY >= 0.67) {
-						updateButtonState('btnA');
+						updateButtonState('btnA', isTouchStart);
 					} else if (ratioX < 0.732 && ratioY > 0.33 && ratioY < 0.67) {
-						updateButtonState('btnX');
+						updateButtonState('btnX', isTouchStart);
 					} else if (ratioX >= 0.732 && ratioX > 0.864 && ratioY > 0.33 && ratioY < 0.67) {
-						updateButtonState('btnB');
+						updateButtonState('btnB', isTouchStart);
 					}
 				} else if (ratioX <= 0.4) {
 					// axes
 					if (ratioX >= 0.132 && ratioX <= 0.264 && ratioY <= 0.33) {
-						updateAxisState('axisN');
+						updateAxisState('axisN', isTouchStart);
 					} else if (ratioX >= 0.132 && ratioX <= 0.264 && ratioY >= 0.67) {
-						updateAxisState('axisS');
+						updateAxisState('axisS', isTouchStart);
 					} else if (ratioX < 0.132 && ratioY > 0.33 && ratioY < 0.67) {
-						updateAxisState('axisW');
+						updateAxisState('axisW', isTouchStart);
 					} else if (ratioX >= 0.132 && ratioX > 0.264 && ratioY > 0.33 && ratioY < 0.67) {
-						updateAxisState('axisE');
+						updateAxisState('axisE', isTouchStart);
 					} else if (ratioX < 0.132 && ratioY <= 0.33) {
-						updateAxisState('axisNW');
+						updateAxisState('axisNW', isTouchStart);
 					} else if (ratioX > 0.264 && ratioY <= 0.33) {
-						updateAxisState('axisNE');
+						updateAxisState('axisNE', isTouchStart);
 					} else if (ratioX < 0.132 && ratioY >= 0.67) {
-						updateAxisState('axisSW');
+						updateAxisState('axisSW', isTouchStart);
 					} else if (ratioX > 0.264 && ratioY >= 0.67) {
-						updateAxisState('axisSE');
+						updateAxisState('axisSE', isTouchStart);
 					} else if (ratioX >= 0.132 && ratioX <= 0.264 && ratioY > 0.33 && ratioY < 0.67) {
-						updateAxisState('axisC');
+						updateAxisState('axisC', isTouchStart);
 					} 
 				}
 			}
@@ -204,10 +220,10 @@ var Phonepad = (function () {
 			networkClient.sendMessage(Network.MESSAGE_TYPES.commands, controller.toJSON());
 		}
 
-		function updateButtonState(buttonId) {
+		function updateButtonState(buttonId, makeVibrate) {
 			// update UI
 			$('.buttons div').removeClass('active');
-			press($('.' + buttonId));
+			press($('.' + buttonId), makeVibrate);
 			
 			// pick selected button
 			var selectedButton;
@@ -235,7 +251,7 @@ var Phonepad = (function () {
 			}
 		}
 
-		function updateAxisState(buttonId) {
+		function updateAxisState(buttonId, makeVibrate) {
 			// update UI
 			$('.axis div').removeClass('active');
 
@@ -243,39 +259,39 @@ var Phonepad = (function () {
 
 			switch (buttonId) {
 				case 'axisNW':
-					press($('.axisN'));
-					press($('.axisW'));
+					press($('.axisN'), makeVibrate);
+					press($('.axisW'), makeVibrate);
 					needsUpdate = controller.updateAxisState(Controller.BUTTONS_MAP.axisVertical, -1.0) || controller.updateAxisState(Controller.BUTTONS_MAP.axisHorizontal, -1.0);
 					break;
 				case 'axisNE':
-					press($('.axisN'));
-					press($('.axisE'));
+					press($('.axisN'), makeVibrate);
+					press($('.axisE'), makeVibrate);
 					needsUpdate = controller.updateAxisState(Controller.BUTTONS_MAP.axisVertical, -1.0) || controller.updateAxisState(Controller.BUTTONS_MAP.axisHorizontal, 1.0);
 					break;
 				case 'axisSW':
-					press($('.axisS'));
-					press($('.axisW'));
+					press($('.axisS'), makeVibrate);
+					press($('.axisW'), makeVibrate);
 					needsUpdate = controller.updateAxisState(Controller.BUTTONS_MAP.axisVertical, 1.0) || controller.updateAxisState(Controller.BUTTONS_MAP.axisHorizontal, -1.0);
 					break;
 				case 'axisSE':
-					press($('.axisS'));
-					press($('.axisE'));
+					press($('.axisS'), makeVibrate);
+					press($('.axisE'), makeVibrate);
 					needsUpdate = controller.updateAxisState(Controller.BUTTONS_MAP.axisVertical, 1.0) || controller.updateAxisState(Controller.BUTTONS_MAP.axisHorizontal, 1.0);
 					break;
 				case 'axisN':
-					press($('.axisN'));
+					press($('.axisN'), makeVibrate);
 					needsUpdate = controller.updateAxisState(Controller.BUTTONS_MAP.axisVertical, -1.0) || controller.updateAxisState(Controller.BUTTONS_MAP.axisHorizontal, 0.0);
 					break;
 				case 'axisS':
-					press($('.axisS'));
+					press($('.axisS'), makeVibrate);
 					needsUpdate = controller.updateAxisState(Controller.BUTTONS_MAP.axisVertical, 1.0) || controller.updateAxisState(Controller.BUTTONS_MAP.axisHorizontal, 0.0);
 					break;
 				case 'axisW':
-					press($('.axisW'));
+					press($('.axisW'), makeVibrate);
 					needsUpdate = controller.updateAxisState(Controller.BUTTONS_MAP.axisVertical, 0.0) || controller.updateAxisState(Controller.BUTTONS_MAP.axisHorizontal, -1.0);
 					break;
 				case 'axisE':
-					press($('.axisE'));
+					press($('.axisE'), makeVibrate);
 					needsUpdate = controller.updateAxisState(Controller.BUTTONS_MAP.axisVertical, 0.0) || controller.updateAxisState(Controller.BUTTONS_MAP.axisHorizontal, 1.0);
 					break;
 				case 'axisC':
