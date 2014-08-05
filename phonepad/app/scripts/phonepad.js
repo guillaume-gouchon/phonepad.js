@@ -96,14 +96,14 @@ var Phonepad = (function () {
     }
 
 		function press(button, makeVibrate) {
-			button.addClass('active');
+			// button.addClass('active');
 			if (makeVibrate) {
 				vibrate(VIBRATION_DURATION);
 			}
 		};
 
 		function release(button) {
-			button.removeClass('active');
+			// button.removeClass('active');
 		};
 
     function connectToGame(chosenGameId) {
@@ -156,7 +156,6 @@ var Phonepad = (function () {
 				var touch = event.originalEvent.touches[i];
 				if (!touch.clientX) continue;
 
-				console.log(event)
 				var isTouchStart = event.type == 'touchstart';
 
 				var ratioX = touch.pageX / screenWidth;
