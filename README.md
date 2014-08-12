@@ -3,7 +3,7 @@
 ## Demo
 
 Test it here : ***[Awesome Demo](http://phonepad.gouchon.com)***  
-Games which are using it : ***[Mychrome Machines](http://machines.gouchon.com)***  
+Games which are using it : ***[Mychrome Machines](http://machines.gouchon.com)***  ***[Smash.js](http://smash.gouchon.com)***  
 
 ## Setup
 
