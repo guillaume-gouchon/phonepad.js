@@ -1,6 +1,6 @@
 {
   "name": "phonepad.js",
-  "version": "0.0.9",
+  "version": "0.1.1",
   "homepage": "http://phonepad.gouchon.com",
   "authors": [
     "Guillaume Gouchon <guillaume.gouchon@gmail.com>"
@@ -29,6 +29,6 @@
   ],
   "dependencies": {
     "peerjs": "~0.3.8",
-    "phonepad.js": "0.1"
+    "phonepad.js": "0.1.1"
   }
 }
