@@ -3,10 +3,10 @@
 */
 function Network() {
 
-	var WEBRTC_SERVER_HOST = 'warnode.com';
+	var WEBRTC_SERVER_HOST = 'gcorp.io';
 	var WEBRTC_SERVER_PORT = 81;
 	var WEBRTC_SERVER_PATH = '';
-	var WS_SERVER_URL = 'http://warnode.com:7070';
+	var WS_SERVER_URL = 'http://gcorp.io:7070';
 
 	var webRTCConnector = null;
 	var socket = null;
