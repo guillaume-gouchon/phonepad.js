@@ -15,19 +15,20 @@
   ],
   "license": "MIT",
   "ignore": [
-  	"src",
+    "src",
     ".gitattributes",
     ".editorconfig",
-  	".gitignore",
-  	".jshintrc",
-  	"bower.json",
-  	"Gruntfile.js",
-  	"package.json",
+    ".gitignore",
+    ".jshintrc",
+    "bower.json",
+    "Gruntfile.js",
+    "package.json",
     "demo",
     "phonepad",
     "server"
   ],
   "dependencies": {
-    "peerjs": "~0.3.8"
+    "peerjs": "~0.3.8",
+    "phonepad.js": "0.1"
   }
 }
