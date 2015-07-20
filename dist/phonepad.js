@@ -1,4 +1,4 @@
-/*! phonepad.js build: 0.0.9. MIT Licensed. Copyright(c) 2014 Guillaume Gouchon <guillaume.gouchon@gmail.com> */
+/*! phonepad.js build: 0.1.1. MIT Licensed. Copyright(c) 2014 Guillaume Gouchon <guillaume.gouchon@gmail.com> */
 'use strict';
 
 function GamepadHelper () {
@@ -137,7 +137,7 @@ function GamepadHelper () {
 function Network() {
 
   var WEBRTC_SERVER_HOST = 'gcorp.io';
-  var WEBRTC_SERVER_PORT = 81;
+  var WEBRTC_SERVER_PORT = 6060;
   var WEBRTC_SERVER_PATH = '';
   var WS_SERVER_URL = 'http://gcorp.io:7070';
 
