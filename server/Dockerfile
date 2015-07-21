@@ -23,5 +23,7 @@ ADD . /
 
 ENV NODE_ENV production
 
+EXPOSE 7070 6060
+
 # Run app using forever
 CMD forever server.js
