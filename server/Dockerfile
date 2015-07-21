@@ -24,4 +24,4 @@ ADD . /
 ENV NODE_ENV production
 
 # Run app using forever
-CMD ["forever start server.js"]
+CMD forever start server.js
