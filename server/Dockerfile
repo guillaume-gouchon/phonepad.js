@@ -11,7 +11,7 @@ RUN apt-get update && \
     apt-get -y install python build-essential nodejs
 
 # Install nodemon
-RUN npm install -g nodemon
+RUN npm install -g forever
 
 # Provides cached layer for node_modules
 ADD package.json /tmp/package.json
@@ -23,8 +23,5 @@ ADD . /
 
 ENV NODE_ENV production
 
-# Expose port
-EXPOSE  7070
-
-# Run app using nodemon
-CMD ["nodemon", "/server.js"]
+# Run app using forever
+CMD ["forever start", "/server.js"]
