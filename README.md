@@ -26,7 +26,6 @@ Phonepad.js is a library which allows you to add Gamepads and Phonepads support 
 `phonepad.start();` // GO !  
 ***(Done !)***
 
-***
 
 ### Play with gamepads
 Gamepads support is using HTML5 GamePads API. Just plug in/out some USB Gamepads or connect Bluetooth ones !
