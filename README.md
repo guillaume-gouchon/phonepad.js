@@ -13,7 +13,7 @@ Phonepad.js is a library which allows you to add Gamepads and Phonepads support 
 1. install the lib via bower : `bower install --save phonepad.js`
 2. add the scripts at the end of your index.html :  
 `<script src="bower_components/peerjs/peer.js"></script>` // used for WebRTC connections  
-`<script src="http://gcorp.io:7070/socket.io/socket.io.js"></script>` // used for websockets connections  
+`<script src="http://pad.gcorp.io/socket.io/socket.io.js"></script>` // used for websockets connections  
 `<script src="bower_components/phonepad.js/dist/phonepad.js"></script>` // the library !  
 
 3. initialize the lib and implement the callbacks :  
