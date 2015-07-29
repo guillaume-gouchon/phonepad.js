@@ -3,10 +3,10 @@
 */
 function Network() {
 
-	var WEBRTC_SERVER_HOST = 'gcorp.io';
+	var WEBRTC_SERVER_HOST = 'pad.gcorp.io';
 	var WEBRTC_SERVER_PORT = 6060;
 	var WEBRTC_SERVER_PATH = '';
-	var WS_SERVER_URL = 'http://gcorp.io:7070';
+	var WS_SERVER_URL = 'http://pad.gcorp.io';
 
 	var webRTCConnector = null;
 	var socket = null;
