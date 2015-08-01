@@ -1,4 +1,4 @@
-phonepad:
+node:
     build: .
     ports:
         - "7070:7070"
