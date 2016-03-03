@@ -8,7 +8,7 @@ var Phonepad = (function () {
   var instance;
 
 	function init() {
-  	
+
   	/**
   	*		PRIVATE
   	*/
@@ -46,7 +46,7 @@ var Phonepad = (function () {
 				setCookie(COOKIE_PLAYER_ID, playerId, COOKIE_EXPIRATION);
 			}
 		}
-		
+
     function setupUI() {
     	// show reconnect button if needed
 			if (gameId != null) {
@@ -111,10 +111,11 @@ var Phonepad = (function () {
   			$('#loading').removeClass('hide');
 				gameId = chosenGameId;
 				isConnecting = true;
-				connectionTimeout = setTimeout(function () {
-					onConnectionError();
-				}, 3000);
-				networkClient.connect(gameId, playerId, onConnected, onConnectionError);
+        connectionTimeout = setTimeout(function () {
+          onConnectionError();
+        }, 3000);
+        networkClient.connect(gameId, playerId, onConnected, onConnectionError);
+        requestFullscreen();
 			}
     }
 
@@ -149,6 +150,8 @@ var Phonepad = (function () {
 
 		function dispatchEvent(event) {
 			event.preventDefault();
+
+      requestFullscreen();
 
 			if (event.originalEvent.touches.length == 0) return;
 
@@ -191,7 +194,7 @@ var Phonepad = (function () {
 						updateAxisState('axisSE', isTouchStart);
 					} else if (ratioX >= 0.132 && ratioX <= 0.264 && ratioY > 0.33 && ratioY < 0.67) {
 						updateAxisState('axisC', isTouchStart);
-					} 
+					}
 				}
 			}
 		}
@@ -223,7 +226,7 @@ var Phonepad = (function () {
 			// update UI
 			$('.buttons div').removeClass('active');
 			press($('.' + buttonId), makeVibrate);
-			
+
 			// pick selected button
 			var selectedButton;
 			switch (buttonId) {
@@ -305,17 +308,17 @@ var Phonepad = (function () {
 		}
 
     return {
- 
+
       /**
       *		PUBLIC
       */
- 
+
     };
- 
+
   };
- 
+
   return {
- 
+
     // Get the Singleton instance if one exists or create one if it doesn't
     getInstance: function () {
 			if ( !instance ) {
@@ -323,7 +326,7 @@ var Phonepad = (function () {
 			}
       return instance;
     }
- 
+
   };
- 
+
 })();

@@ -16,11 +16,11 @@ body {
 
 #joinGame {
 	position: fixed;
-	top: 0px;
-	left: 0px;
+	top: 0;
+	left: 0;
 	height: 100%;
 	width: 100%;
-	background: rgba(0, 0, 0, 0.8);
+	background: rgba(0, 0, 0, 0.7);
 	text-align: center;
 	padding: 20px 0px;
 
@@ -52,8 +52,8 @@ body {
 			text-shadow: 2px 2px black;
 			outline: 0;
 
-			&.active {
-				opacity: 0.5;
+			&:active {
+				opacity: 0.7;
 			}
 		}
 
@@ -79,7 +79,8 @@ body {
 
 #loading {
 	position: fixed;
-	top: 0px;
+	top: 0;
+  left: 0;
 	height: 100%;
 	width: 100%;
 	background: #000;
