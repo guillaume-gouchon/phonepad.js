@@ -136,10 +136,10 @@ function GamepadHelper () {
 */
 function Network() {
 
-  var WEBRTC_SERVER_HOST = 'pad.gcorp.io';
+  var WEBRTC_SERVER_HOST = 'pad.gouchon.com';
   var WEBRTC_SERVER_PORT = 6060;
   var WEBRTC_SERVER_PATH = '';
-  var WS_SERVER_URL = 'http://pad.gcorp.io';
+  var WS_SERVER_URL = 'https://pad.gouchon.com';
 
   var webRTCPeer = null, webRTCConnection = null;
 
