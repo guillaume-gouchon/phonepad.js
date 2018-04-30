@@ -35,7 +35,7 @@ function GamepadHelper () {
   var stopPolling = function () {
     var pinging = false;
   };
-    
+
   var pingGamepads = function () {
     pollGamepads();
     scheduleNextPing();
@@ -106,7 +106,7 @@ function GamepadHelper () {
   var onGamepadDisconnect = function (event) {
     for (var i in gamepads) {
       if (gamepads[i].index === event.gamepad.index) {
-        
+
         removePlayer(event.gamepad);
         break;
       }
@@ -137,7 +137,7 @@ function GamepadHelper () {
 function Network() {
 
   var WEBRTC_SERVER_HOST = 'pad.gouchon.com';
-  var WEBRTC_SERVER_PORT = 6060;
+  var WEBRTC_SERVER_PORT = 443;
   var WEBRTC_SERVER_PATH = '';
   var WS_SERVER_URL = 'https://pad.gouchon.com';
 
@@ -149,23 +149,23 @@ function Network() {
     socket.emit('newGame');
 
     socket.on('gameId', function (gameId) {
-      
+
       connectWebRTC(gameId, callbacks);
       callbacks.onConnected(gameId);
     });
 
     socket.on('pId', function (pId) {
-      
+
       callbacks.onPlayerConnected(pId, Phonepad.PAD_TYPES.phonepad);
     });
 
     socket.on('comm', function (commands) {
-      
+
       callbacks.onCommandsReceived(commands);
     });
 
     socket.on('disconnect', function (pId) {
-      
+
       // takes too much time to be fired...
       // callbacks.onPlayerDisconnected(pId);
     });
@@ -183,13 +183,13 @@ function Network() {
         webRTCConnection.on('data', function (data) {
           switch(data.type) {
             case 'pId':
-              
+
               var playerId = JSON.parse(data.content);
               webRTCConnection.pId = playerId;
               callbacks.onPlayerConnected(playerId, Phonepad.PAD_TYPES.phonepad);
               break;
             case 'comm':
-              
+
               var commands = JSON.parse(data.content);
               callbacks.onCommandsReceived(commands);
               break;
@@ -198,7 +198,7 @@ function Network() {
 
         // remove disconnected players
         webRTCConnection.on('close', function () {
-          
+
           // takes too much time to be fired...
           // callbacks.onPlayerDisconnected(conn.pId);
         });
@@ -206,11 +206,11 @@ function Network() {
 
       // automatic reconnection to the server
       webRTCPeer.on('disconnected', function () {
-        
+
         connectWebRTC(gameId, callbacks);
       });
     } catch (e) {
-      
+
     }
   };
 
@@ -231,7 +231,7 @@ var Phonepad = (function () {
   var instance;
 
   function init(options) {
-    
+
     /**
     *   PRIVATE
     */
@@ -240,7 +240,7 @@ var Phonepad = (function () {
     var gamepadHelper = new GamepadHelper();
 
     return {
- 
+
       /**
       *   PUBLIC
       */
@@ -254,11 +254,11 @@ var Phonepad = (function () {
       }
 
     };
- 
+
   }
- 
+
   return {
- 
+
     // Get the Singleton instance if one exists or create one if it doesn't
     getInstance: function (options) {
       if ( !instance ) {
@@ -266,9 +266,9 @@ var Phonepad = (function () {
       }
       return instance;
     }
- 
+
   };
- 
+
 })();
 
 Phonepad.PAD_TYPES = {
