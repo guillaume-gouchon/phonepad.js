@@ -1,4 +1,4 @@
-FROM node:8.9.4-slim
+FROM node:10.15.3-jessie-slim
 
 COPY . /usr/src
 WORKDIR /usr/src
