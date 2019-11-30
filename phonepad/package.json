@@ -10,8 +10,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "jquery": "^3.4.1",
-    "peerjs": "~0.3.8"
+    "jquery": "^3.4.1"
   },
   "devDependencies": {
     "grunt": "^1.0.4",

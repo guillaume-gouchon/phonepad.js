@@ -10,36 +10,22 @@ function Network() {
 	var socket = null;
 
 	this.connect = function (gameId, playerId, onConnected, onError) {
-		if(!isWebRTCCapable()) {
-			console.log('Connecting through websockets...');
-			socket = io.connect(WS_SERVER_URL);
+		console.log('Connecting through websockets...');
+		socket = io.connect(WS_SERVER_URL);
 
-			// send player id to game
-		  this.sendMessage(Network.MESSAGE_TYPES.playerId, {
-		  	gameId: gameId,
-		  	pId: playerId
-		  });
+		// send player id to game
+	  this.sendMessage(Network.MESSAGE_TYPES.playerId, {
+	  	gameId: gameId,
+	  	pId: playerId
+	  });
 
-			socket.on('connected', function () {
-				onConnected();
-			});
+		socket.on('connected', function () {
+			onConnected();
+		});
 
-		  socket.on('error', function () {
-		  	onError();
-		  });
-		} else {
-			console.log('Connecting through webRTC...');
-			var peer = new Peer(null, { host: WEBRTC_SERVER_HOST });
-			webRTCConnector = peer.connect(gameId);
-			var _this = this;
-			webRTCConnector.on('open', function () {
-
-			  // send player id to game
-			  _this.sendMessage(Network.MESSAGE_TYPES.playerId, playerId);
-
-			  onConnected();
-			});
-		}
+	  socket.on('error', function () {
+	  	onError();
+	  });
 	};
 
 	this.sendMessage = function (messageType, message) {
