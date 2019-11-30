@@ -1,0 +1,137 @@
+@font-face {
+    font-family: 'myFont';
+    src: local('fonts/font.ttf'),
+         url('fonts/font.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.hide {
+	display: none!important;
+}
+
+body {
+	overflow: hidden;
+	padding: 0px;
+	margin: 0;
+}
+
+#joinGame {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	text-align: center;
+	padding: 20px 0px;
+}
+
+#joinGame div {
+	margin-bottom: 20px;
+}
+
+#joinGame input {
+	font-family: 'myFont';
+	height: 60px;
+	width: 45%;
+	padding-left: 2%;
+	font-size: 0.8em;
+	margin-right: 2%;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	background: #111;
+	color: #eee;
+	outline: 0;
+}
+
+#joinGame button {
+	font-family: 'myFont';
+	height: 60px;
+	width: 40%;
+	font-size: 0.8em;
+	background: #378000;
+	border: 3px solid white;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	color: #ccc;
+	text-shadow: 2px 2px black;
+	outline: 0;
+}
+
+#joinGame button:active {
+	opacity: 0.7;
+}
+
+#rejoinBtn {
+	width: 72%;
+}
+
+.bounce {
+	animation: bounce 0.5s alternate infinite;
+}
+
+@keyframes bounce {
+  0% {
+      transform: scale(1.0);
+  }
+  100% {
+      transform: scale(0.95);
+  }
+}
+
+#loading {
+	position: fixed;
+	top: 0;
+  left: 0;
+	height: 100%;
+	width: 100%;
+	background: #000;
+	opacity: 0.8;
+	z-index: 1000;
+}
+
+#loading .container {
+	padding-top: 100px;
+}
+
+#loading .ring {
+	background-color: rgba(0,0,0,0);
+  border: 5px solid rgba(110, 163, 255,0.9);
+  opacity: 0.9;
+  border-top: 5px solid rgba(0,0,0,0);
+  border-left: 5px solid rgba(0,0,0,0);
+  border-radius: 50px;
+  box-shadow: 0 0 35px #2187e7;
+  margin: 0 auto;
+}
+
+#loading .ring:nth-child(1) {
+	width: 50px;
+  height: 50px;
+  animation: spin .7s infinite linear;
+}
+
+#loading .ring:nth-child(2) {
+	width: 30px;
+  height: 30px;
+  position: relative;
+  top: -50px;
+  animation: spinoff .7s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+@keyframes spinoff {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(-360deg);
+  }
+}

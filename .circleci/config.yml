@@ -39,7 +39,7 @@ commands:
       - run: gcloud container images delete gcr.io/<< parameters.image >> -q --force-delete-tags
 
 jobs:
-  build_deploy_prod:
+  build_deploy_peer:
     working_directory: ~/phonepad.js/server
     docker:
       - image: google/cloud-sdk
@@ -56,11 +56,33 @@ jobs:
           env: production
       - delete_container_image:
           image: api-project-725491021247/peer2peer
+  build_deploy_pad:
+    working_directory: ~/phonepad.js/phonepad
+    docker:
+      - image: google/cloud-sdk
+    steps:
+      - checkout:
+          path: ~/phonepad.js
+      - login_on_gcp:
+          gcloud_key: $GCLOUD_SERVICE_KEY_PROD
+          project: api-project-725491021247
+      - upload_image_on_gcp:
+          image: api-project-725491021247/phonepad
+      - deploy_on_gcp:
+          image: api-project-725491021247/phonepad
+          env: production
+      - delete_container_image:
+          image: api-project-725491021247/phonepad
 
 workflows:
   build_deploy:
     jobs:
-      - build_deploy_prod:
+      - build_deploy_peer:
+          filters:
+            branches:
+              only:
+                - master
+      - build_deploy_pad:
           filters:
             branches:
               only:

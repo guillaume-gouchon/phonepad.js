@@ -4,8 +4,6 @@
 function Network() {
 
 	var WEBRTC_SERVER_HOST = 'pad.gouchon.com';
-	var WEBRTC_SERVER_PORT = 443;
-	var WEBRTC_SERVER_PATH = '';
 	var WS_SERVER_URL = 'https://pad.gouchon.com';
 
 	var webRTCConnector = null;
@@ -31,7 +29,7 @@ function Network() {
 		  });
 		} else {
 			console.log('Connecting through webRTC...');
-			var peer = new Peer(null, {host: WEBRTC_SERVER_HOST, port: WEBRTC_SERVER_PORT, path: WEBRTC_SERVER_PATH});
+			var peer = new Peer(null, { host: WEBRTC_SERVER_HOST });
 			webRTCConnector = peer.connect(gameId);
 			var _this = this;
 			webRTCConnector.on('open', function () {
