@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "author": "Guillaume Gouchon",
   "license": "MIT",
+  "main": "server.js",
+  "scripts": {
+    "start": "node .",
+    "build": "grunt build"
+  },
   "dependencies": {
-    "socket.io": "1.0",
-    "peer": "~0.2.6"
+    "peer": "~0.2.6",
+    "socket.io": "^2.3.0"
   }
 }
